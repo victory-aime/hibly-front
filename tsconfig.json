@@ -19,7 +19,23 @@
       }
     ],
     "paths": {
-      "@/*": ["./src/*"]
+      "_assets/*": ["./public/assets/*"],
+      "_lottie/*": ["./public/lottie/*"],
+      "_components/*": ["./src/components/*"],
+      "_component/*": ["./src/app/components/*"],
+      "_constants/*": ["./src/app/constants/*"],
+      "_theme/*": ["./src/theme/*"],
+      "_authOptions/*": ["./src/app/api/*"],
+      "_utils/*": ["./src/utils/*"],
+      "_config/*": ["./src/app/config/*"],
+      "_hooks/*": ["./src/app/hooks/*"],
+      "_modules/*": ["./src/app/modules/*"],
+      "_context/*": ["./src/app/context/*"],
+      "_endpoints/*": ["./src/app/config/endpoints/*"],
+      "_locales/*": ["./src/app/locales/*"],
+      "_services/*": ["./src/services/*"],
+      "_state_management/*": ["./src/state-management/*"],
+      "_types/*": ["./src/types/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

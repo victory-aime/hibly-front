@@ -1,6 +1,11 @@
 export const APP_ROUTES = {
   HOME: '/modules/redirect',
-  SIGN_IN: '/auth/signin',
+  AUTH: {
+    SIGN_IN: '/auth/signin',
+    SIGN_UP: '/auth/signup',
+    RESET_PASSWORD: '/auth/reset-password',
+    RESET_PASSWORD_OTP: '/auth/reset-password-otp',
+  },
   LEGAL_MENTIONS: '/mentions-legales',
   SECURITY: '/security',
   PRIVACY_POLICY: '/privacy-policy',

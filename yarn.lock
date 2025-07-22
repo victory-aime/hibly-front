@@ -8430,10 +8430,10 @@ rfdc@^1.4.1:
   resolved "https://registry.yarnpkg.com/rfdc/-/rfdc-1.4.1.tgz#778f76c4fb731d93414e8f925fbecf64cce7f6ca"
   integrity sha512-q1b3N5QkRUWUl7iyylaaj3kOpIT0N2i9MqIEQXP73GVsN9cw3fdx8X63cEmWhJGi2PPCF23Ijp7ktmd39rawIA==
 
-rise-core-frontend@^3.1.0-alpha.0:
-  version "3.1.0-alpha.0"
-  resolved "https://registry.yarnpkg.com/rise-core-frontend/-/rise-core-frontend-3.1.0-alpha.0.tgz#d76836843ee171453dbf34785d02c37517413261"
-  integrity sha512-KqUZbsGEnLPb2/2wfxqM7SOWRRRX1+yFAbLBBUMu4ZOrxkVzlVe5VYsMDNfHbQDoknl0sbwG4JnbyDTg7T6cTA==
+rise-core-frontend@^3.2.0-alpha.0:
+  version "3.2.0-alpha.0"
+  resolved "https://registry.yarnpkg.com/rise-core-frontend/-/rise-core-frontend-3.2.0-alpha.0.tgz#62a6cf28da979102d23862b99bf9b65b0e380897"
+  integrity sha512-A8zmn0FXV2DLmrNRpWg4RU5F4fj/M9/imkSnpK9EO+JxrZKPF3joTpsC7T8TiZZm4c+1IGDr1+g59BGcsJ8hTg==
   dependencies:
     "@tanstack/react-query" "^5.83.0"
     axios "^1.10.0"

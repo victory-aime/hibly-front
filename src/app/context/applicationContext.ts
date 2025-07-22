@@ -1,4 +1,4 @@
-import { APIS } from '_endpoints/route';
+import { APIS } from '_store/endpoints';
 import { ApplicationContext } from 'rise-core-frontend';
 import { handleApiError } from '_utils/handleApiError';
 import { handleApiSuccess } from '_utils/handleApiSuccess';

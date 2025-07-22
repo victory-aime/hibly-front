@@ -1,3 +1,5 @@
+'use client';
+
 import { FormatNumber } from '@chakra-ui/react';
 import { FC, useEffect, useState } from 'react';
 import { BaseFormatNumberProps } from './interface/format-number';

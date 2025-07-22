@@ -17,19 +17,19 @@ export const LinkFooter = () => {
       fontSize="sm"
       zIndex={1}
     >
-      <Link href={APP_ROUTES.LEGAL_MENTIONS} variant="plain" color="white">
+      <Link href={APP_ROUTES.LEGAL_MENTIONS} variant="plain">
         {t('COMMON.LEGAL_MENTIONS')}
       </Link>
       <Separator orientation="vertical" height="4" />
-      <Link href={APP_ROUTES.SECURITY} variant="plain" color="white">
+      <Link href={APP_ROUTES.SECURITY} variant="plain">
         {t('COMMON.SECURITY')}
       </Link>
       <Separator orientation="vertical" height="4" />
-      <Link href={APP_ROUTES.PRIVACY_POLICY} variant="plain" color="white">
+      <Link href={APP_ROUTES.PRIVACY_POLICY} variant="plain">
         {t('COMMON.PRIVACY_POLICY')}
       </Link>
       <Separator orientation="vertical" height="4" />
-      <Link href={APP_ROUTES.TERMS_OF_USE} variant="plain" color="white">
+      <Link href={APP_ROUTES.TERMS_OF_USE} variant="plain">
         {t('COMMON.TERMS_OF_USE')}
       </Link>
       <Separator orientation="vertical" height="4" />
@@ -37,7 +37,6 @@ export const LinkFooter = () => {
         variant={TextVariant.S}
         cursor="pointer"
         _hover={{ textDecoration: 'underline' }}
-        color="white"
         onClick={() => console.log('Contact Us')}
       >
         {t('COMMON.CONTACT_US')}

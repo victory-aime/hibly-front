@@ -7,7 +7,7 @@ import { SIDE_BAR_ROUTES } from '_config/routes';
 import { GlobalLoader } from '_components/custom/loader/Loader';
 
 const roleToDashboardMap: Record<string, string> = {
-  USERS: SIDE_BAR_ROUTES.DASHBOARD,
+  DRH: SIDE_BAR_ROUTES.DASHBOARD,
   ADMIN: '/admin/dashboard',
 };
 
@@ -17,12 +17,11 @@ export default function RedirectPage() {
 
   useEffect(() => {
     if (status === 'loading') return;
-    const userRoles = Array.isArray(session?.roles) ? session.roles : [];
-    const targetDashboard = userRoles
-      .map((role) => roleToDashboardMap[role])
-      .find(Boolean);
-    if (targetDashboard) {
-      router.replace(targetDashboard);
+
+    const role = session?.roles;
+
+    if (role && roleToDashboardMap[role]) {
+      router.replace(roleToDashboardMap[role]);
     } else {
       router.replace('/unauthorized');
     }

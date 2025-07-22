@@ -4,7 +4,7 @@ import { FaUserCog, FaCog } from 'react-icons/fa';
 import { SIDE_BAR_ROUTES } from '_config/routes';
 
 export const MENU_BY_ROLE: Record<string, ILink[]> = {
-  AUTOMOBILISTE: [
+  DRH: [
     {
       path: SIDE_BAR_ROUTES.DASHBOARD,
       label: 'SIDE_BAR.DASHBOARD',

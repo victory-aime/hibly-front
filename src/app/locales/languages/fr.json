@@ -1,25 +1,37 @@
 {
   "SIDE_BAR": {
     "DASHBOARD": "Tableau de bord",
-    "MANAGE_CARS": "Gestion véhicules",
-    "MANAGE_PARCS": "Mes parcs",
-    "MAINTENANCE": "Maintenance",
-    "AGENDA": "Mon Agenda",
     "SETTINGS": "Paramètres",
     "PROFILE": "Mon profil",
-    "PLAN": "Mon offre",
     "HELP": "Aide & Support"
   },
   "WELCOME": "Bonjour {{username}}",
-  "SIGN_IN_TITLE": "Bienvenue chez Rental Services",
-  "SIGN_IN_DESC": "Gérez facilement l'ensemble de vos services de location : hôtels, voitures, équipements et plus encore.Accédez à votre tableau de bord centralisé et pilotez votre activité en toute simplicité.",
-  "LOGOUT_MESSAGE": "Vous vous êtes déconnecté avec succès. Merci d'avoir utilisé notre service. Pour vous reconnecter, veuillez cliquer sur le bouton ci-dessous.",
+  "SIGN_IN_TITLE": "Bienvenue chez Hibly",
+  "SIGN_IN_DESC": "Bienvenue sur Hibly ! Votre espace RH tout-en-un pour gérer vos équipes avec le sourire. Congés, objectifs, évaluations… tout est là, simple et fluide.",
+  "FORM": {
+    "EMAIL": "Adresse e-mail",
+    "EMAIL_PLACEHOLDER": "Entrez votre adresse e-mail",
+    "PASSWORD": "Mot de passe",
+    "PASSWORD_PLACEHOLDER": "Entrez votre mot de passe",
+    "REMEMBER_ME": "Se souvenir de moi",
+    "FORGOT_PASSWORD": "Mot de passe oublié ?",
+    "DONT_HAVE_AN_ACCOUNT": "Vous n'avez pas de compte ?",
+    "SIGN_UP": "Créer un compte",
+    "RESET_PASSWORD": "Réinitialiser le mot de passe",
+    "RESET_PASSWORD_DESC": "Entrez votre adresse e-mail pour recevoir un code OTP de réinitialisation de mot de passe.",
+    "RESET_PASSWORD_OTP_DESC": "Veuillez saisir l'OTP (One-Time Password) que vous avez reçu sur votre addresse email {{email}} pour réinitialiser votre mot de passe.",
+    "RESET_PASSWORD_OTP_WARNING": "Si vous n'avez pas reçu l'OTP, veuillez vérifier vos spam ou attendre quelques instants avant de réessayer",
+    "RESET_PASSWORD_OTP_RETRY": "Vous n'avez pas reçu le code ?",
+    "RESET_PASSWORD_OTP_RESEND": "Renvoyer le code",
+    "RESET_PASSWORD_OTP_MAX_SEND_ATTEMPTS": "Vous avez atteint le nombre maximum de tentatives d'envoie de code OTP",
+    "RESET_PASSWORD_OTP_EXPIRES_IN": "Ce code expire dans {{expiresIn}}",
+    "RESET_PASSWORD_OTP_RETRY_INFO": "Vous pouvez réessayer dans {{time}}"
+  },
   "SESSION_EXPIRE": "Session expirée",
   "SESSION_MESSAGE": "Votre session a expiré. Veuillez vous reconnecter pour continuer.",
   "HELP_MESSAGE": "Pour améliorer votre expérience, nous vous invitons à nous faire part de vos suggestions et de vos commentaires. Nous sommes impatients de vous entendre et de travailler ensemble pour rendre notre application encore meilleure ! Appuyez sur ce bouton pour nous faire part de vos suggestions.",
   "IDEA_TEXT": "J'ai une idée",
   "INFO_GEN_TITLE": "Informations Generales",
-  "PRICE_INFO": "Tarifications & Disponibilite",
   "SELECT_LANGUAGES": "Choisissez votre langue",
   "SELECT_LANGUAGES_DESC": "Veuillez selectionner la langue de l'application",
   "STATUS": "Statut",
@@ -59,6 +71,7 @@
     "REMISE": "Appliquer une Remise ?",
     "CLEAR": "Effacer",
     "SEARCH": "Rechercher",
+    "SERVER_ERROR": "Une erreur s'est produite lors de l'envoi de votre requête. Veuillez réessayer plus tard.",
     "NO_SELECT_OPTIONS": "Aucune options trouvée",
     "SELECT_OPTIONS": "Sélectionner une option",
     "ITEMS_SELECTED": "sélectionné(s)",
@@ -78,135 +91,19 @@
     "YEAR": "Année",
     "DAY": "Jour",
     "WEEK": "Semane",
-    "LEGEND": {
-      "RESERVATIONS": "Nouvelle réservation",
-      "MAINTENANCE": "Maintenance planifiée",
-      "CANCELED": "Réservation annulée",
-      "UNAVAILABLE": "Véhicule indisponible"
-    },
     "NO_DATA": "Aucune donnée disponible",
     "PAGE_NOT_FOUND": "Page non trouvée",
     "PAGE_NOT_FOUND_DESC": "La page que vous recherchez n'existe pas ou a été supprimée. Veuillez vérifier l'URL ou revenir à la page d'accueil.",
     "BACK_TO_HOME": "Retour à l'accueil",
+    "BACK": "Retour",
     "ACCOUNT_NOT_ACTIVATED": "Votre compte a été desactive?",
     "ACTIVATE_ACCOUNT": "Activer mon compte",
     "ENABLED": "Actif",
     "fr": "Français",
-    "en": "Anglais",
-    "it": "Italien"
-  },
-  "VEHICLE_STATUS": {
-    "AVAILABLE": "Disponible",
-    "MAINTENANCE": "Maintenance",
-    "UNAVAILABLE": "Indisponible"
-  },
-  "FUEL": {
-    "GASOLINE": "Gasoil",
-    "DIESEL": "Diesel",
-    "ELECTRIC": "Electrique",
-    "HYBRID": "Hybride"
-  },
-  "TRANSMISSION": {
-    "MANUAL": "Manuelle",
-    "AUTOMATIC": "Automatique"
-  },
-  "CARS": {
-    "TITLE": "Vehicule",
-    "LIST_DESC": "Retrouvez ici tous vos véhicules enregistrés. Gardez une vue d’ensemble claire, gérez leur disponibilité en temps réel, et optimisez vos performances en mettant régulièrement à jour les fiches les plus consultées.",
-    "ADD_CARS": "Ajouter un véhicule",
-    "EDIT_CARS": "Modifier un véhicule",
-    "EDIT_DESC": "Mettez à jour les informations de votre véhicule pour garantir des données fiables et attractives. Une fiche bien entretenue reflète votre sérieux et augmente vos chances de réservation.",
-    "ADD_DESC": "Mettez en valeur votre véhicule en renseignant ses caractéristiques principales. Plus votre fiche est complète et précise, plus elle inspire confiance et attire les clients. Commencez dès maintenant à booster votre visibilité.",
-    "DELETE_ONE_CAR": "Etes vous sur de vouloir supprimer ce véhicule ?",
-    "DELETE_ALL": "Etes vous sur de vouloir supprimer ces véhicules ?",
-    "DUPLICATE_CARS": "Dupliquer un véhicule",
-    "DUPLICATE_DESC": "Dupliquez un véhicule pour en créer un nouveau en changeant les informations plus rapidement vous ne partez pas de zéro.",
-    "RESTORE_CARS": "Restaurer un véhicule",
-    "RESTORE_DESC": "Restaurez un véhicule supprimé pour le réactiver.",
-    "FORMS": {
-      "NAME": "Nom",
-      "BRAND": "Marque",
-      "MODELS": "Modèle",
-      "PLATE_NUMBER": "Numéro d'immatriculation",
-      "FUEL": "Type de carburant",
-      "TRANSMISSION": "Transmission",
-      "DOORS": "Nombre de portes",
-      "SEATS": "Nombre de sièges",
-      "DAILY_PRICE": "Prix journalier",
-      "DISCOUNT_VALUE": "Valeur de la remise",
-      "DISCOUNT": "Prix remisé",
-      "PARKING": "Adresse de stationnement",
-      "CATEGORY": "Catégorie",
-      "STATUS": "Statut",
-      "EQUIPMENTS": "Équipements",
-      "IMAGE": "Images",
-      "INFO": {
-        "TITLE": "Les informations générales que vous saisissez ici sont essentielles pour capter l’attention de vos futurs clients. En détaillant le modèle, la marque, le type de carburant ou encore la transmission, vous renforcez la confiance et facilitez la prise de décision. Une fiche bien renseignée, c’est une meilleure visibilité, plus de clics, et plus de réservations.",
-        "DISCOUNT_VALUE": "Indiquez la remise appliquée (%)",
-        "DISCOUNT": "Prix après remise",
-        "EQUIPMENTS": "Sélectionnez les équipements disponibles pour ce véhicule",
-        "IMAGES": "Ajoutez des images du véhicule",
-        "PRICE": "Un tarif clair et compétitif attire davantage de réservations. Indiquez le prix journalier pour valoriser votre véhicule tout en restant attractif.",
-        "STATUS": "La disponibilité du véhicule est essentielle pour la prise de décision des clients. Assurez-vous qu’elle soit toujours à jour pour éviter toute confusion ou réservation manquée."
-      }
-    }
-  },
-  "PARC": {
-    "TOTAL_CARS": "Total de vehicule",
-    "ADD_TITLE": "Ajouter un parc",
-    "EDIT_TITLE": "Modifier un parc",
-    "DELETE_TITLE": "Supprimer un parc",
-    "DESC": "La gestion des parkings consiste à organiser, contrôler et optimiser l’utilisation des espaces de stationnement pour assurer un flux fluide des véhicules et une utilisation efficace de l’espace disponible.",
-    "CONSENT_TITLE": "Oui! Je veux supprimer ce parc",
-    "FORMS": {
-      "NAME": "Nom du parc",
-      "ADDRESS": "Emplacement"
-    }
-  },
-  "MAINTENANCE": {
-    "TITLE": "Titre",
-    "ADD": "Planifier une maintenance",
-    "EDIT": "Modifier la maintenance",
-    "DESC": "La maintenance en gestion automobile regroupe les actions visant à assurer la sécurité, la fiabilité et la performance des véhicules, qu’il s’agisse de réparations, de contrôles préventifs ou d’améliorations.",
-    "STATUS": {
-      "PLANNED": "Planifier",
-      "IN_PROGRESS": "En cours",
-      "COMPLETED": "Terminé",
-      "CANCELED": "Annuler"
-    },
-    "STATE": "Etat",
-    "PLANNED": "Dates prévues",
-    "FORMS": {
-      "TITLE": "Selectionner le titre",
-      "CAR": "Selectionner le vehicule",
-      "DATES": "Planifier les dates",
-      "COST": "Côut",
-      "DESC": "Description",
-      "START_TIME": "Heure de début",
-      "END_TIME": "Heure de fin"
-    },
-    "VALIDATION": {
-      "TITLE_REQUIRED": "Le titre est requis",
-      "CAR_REQUIRED": "La voiture est requise",
-      "DATE_FROM_REQUIRED": "La date de début est requise",
-      "DATE_TO_REQUIRED": "La date de fin est requise",
-      "DATES_REQUIRED": "Les dates sont requises",
-      "START_TIME_INVALID": "Heure de début invalide",
-      "START_TIME_REQUIRED": "Heure de début requise",
-      "END_TIME_INVALID": "Heure de fin invalide",
-      "END_TIME_REQUIRED": "Heure de fin requise",
-      "PRICE_TYPE": "Le prix doit être un nombre",
-      "PRICE_REQUIRED": "Le prix est requis",
-      "STATUS_REQUIRED": "Le statut est requis"
-    },
-    "CLOSE": {
-      "TITLE": "Clôturer la maintenance",
-      "DESC": "  Voulez vous vraiment terminer la maintenance de cette voiture {{carsName}} ? Elle est censée se clôturer le {{endDate}}"
-    }
+    "en": "Anglais"
   },
   "DRAG_DROP": {
     "TITLE": "Glissez-déposez des fichiers ici, ou cliquez pour sélectionner",
-
     "DESC": "Formati accettati: .png, .jpg fino a {{max_size}}MB",
     "ERROR": {
       "MAX_FILES": "Vous ne pouvez pas télécharger plus de {{max_files}} fichiers.",

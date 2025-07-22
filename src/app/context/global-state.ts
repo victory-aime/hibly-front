@@ -10,7 +10,6 @@ import { GlobalApplicationContext } from './applicationContext';
  */
 
 export const applicationContext = new GlobalApplicationContext(
-  process.env.BACKEND_URL + '_api/v1',
+  process.env.NEXT_PUBLIC_BACKEND_URL + '_api/v1',
 );
-console.log('api backend url', process.env.BACKEND_URL);
 applicationInstance.setContext(applicationContext);

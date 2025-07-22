@@ -1,4 +1,4 @@
-export async function keycloakSessionLogOut() {
+export async function sessionLogout() {
   try {
     await fetch(`/api/auth/logout`, { method: 'GET' });
   } catch (err) {

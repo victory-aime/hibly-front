@@ -6,8 +6,27 @@
     "HELP": "Help & Support"
   },
   "WELCOME": "Hello {{username}}",
-  "SIGN_IN_TITLE": "Welcome to Rental Services",
-  "SIGN_IN_DESC": "Easily manage all your rental services: hotels, cars, equipment and more.Access your centralized dashboard and easily manage your business.",
+  "SIGN_IN_TITLE": "Welcome to Hibly",
+  "SIGN_IN_DESC": "Welcome to Hibly! Your all-in-one HR space for managing your teams with a smile. Holidays, goals, evaluations... everything is there, simple and fluid.",
+  "FORM": {
+    "EMAIL": "E-mail address",
+    "EMAIL_PLACEHOLDER": "Enter your e-mail address",
+    "PASSWORD": "Password",
+    "PASSWORD_PLACEHOLDER": "Enter your password",
+    "REMEMBER_ME": "Remember me",
+    "FORGOT_PASSWORD": "Forgot your password?",
+    "DONT_HAVE_AN_ACCOUNT": "Don't have an account? ",
+    "SIGN_UP": "Create an account",
+    "RESET_PASSWORD": "Reset password",
+    "RESET_PASSWORD_DESC": "Enter your e-mail address to receive a password reset OTP code",
+    "RESET_PASSWORD_OTP_DESC": "Please enter the OTP (One-Time Password) you received on your {{email}} e-mail address to reset your password. ",
+    "RESET_PASSWORD_OTP_WARNING": "If you haven't received the OTP, please check your spam or wait a few moments before trying again",
+    "RESET_PASSWORD_OTP_RETRY": "Didn't you receive the code? ",
+    "RESET_PASSWORD_OTP_RESEND": "Resend the code",
+    "RESET_PASSWORD_OTP_MAX_SEND_ATTEMPTS": "You have reached the maximum number of attempts to send the OTP code",
+    "RESET_PASSWORD_OTP_EXPIRES_IN": "This code expires in {{expiresIn}}",
+    "RESET_PASSWORD_OTP_RETRY_INFO": "You can try again in {{time}}"
+     },
   "LOGOUT_MESSAGE": "You have successfully logged out. Thank you for using our service. To log in again, please click the button below.",
   "SESSION_EXPIRE": "Session expired",
   "SESSION_MESSAGE": "Your session has expired. Please log in again to continue",
@@ -16,7 +35,6 @@
   "HELP_MESSAGE": "To improve your experience, we invite you to share your suggestions and feedback. We look forward to hearing from you and working together to make our app even better! Tap this button to share your ideas.",
   "IDEA_TEXT": "I have an idea",
   "INFO_GEN_TITLE": "General Information",
-  "PRICE_INFO": "Pricing & Availability",
   "STATUS": "Status",
   "THINK_BOX": {
     "TITLE": "Suggestion Box",
@@ -54,6 +72,8 @@
     "REMISE": "Apply a Discount?",
     "CLEAR": "Clear",
     "SEARCH": "Search",
+    "BACK": "Back",
+    "SERVER_ERROR": "An error occurred while sending your request. Please try again later.",
     "NO_SELECT_OPTIONS": "No options found",
     "SELECT_OPTIONS": "Select an option",
     "ITEMS_SELECTED": "selected",
@@ -88,8 +108,7 @@
     "ACTIVATE_ACCOUNT": "Activate my account",
     "ENABLED": "Enabled",
     "fr": "French",
-    "en": "English",
-    "it": "Italian"
+    "en": "English"
   },
   "DRAG_DROP": {
     "TITLE": "Drag and drop files here, or click to select",

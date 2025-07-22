@@ -13,8 +13,7 @@ export async function getAccessToken() {
 export async function getIdToken() {
   const session = await getServerSession(authOptions);
   if (session) {
-    const idTokenDecrypted = decrypted(session.id_token);
-    return idTokenDecrypted;
+    return session.userId;
   }
   return null;
 }

@@ -66,6 +66,7 @@ interface CheckBoxProps extends HTMLChakraProps<'label'> {
   label?: string | React.ReactNode;
   validate?: any;
   itemsPerRow?: number;
+  size?: 'sm' | 'md' | 'lg';
   items?: {
     name?: string;
     value?: string;

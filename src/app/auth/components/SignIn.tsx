@@ -26,29 +26,16 @@ export const SignIn = () => {
   const router = useRouter();
   const callbackUrl = useSearchParams()?.get('callbackUrl') || APP_ROUTES.HOME;
   const { login } = useAuth();
+
   const [initialValues, setInitialValues] = useState({
     email: '',
     password: '',
     rememberMe: false,
   });
-  const rememberMe = localStorage.getItem(StorageKey.REMEMBER_ME);
 
-  const handleSubmit = async (values: any) => {
-    if (values.rememberMe) {
-      localStorage.setItem(StorageKey.REMEMBER_ME, 'true');
-      localStorage.setItem(StorageKey.EMAIL, values.email);
-      localStorage.setItem(StorageKey.PASSWORD, values.password);
-    } else {
-      localStorage.removeItem(StorageKey.REMEMBER_ME);
-      localStorage.removeItem(StorageKey.EMAIL);
-      localStorage.removeItem(StorageKey.PASSWORD);
-    }
-    await login({
-      email: values.email,
-      password: values.password,
-      callbackUrl,
-    });
-  };
+  const rememberMe =
+    typeof window !== 'undefined' &&
+    localStorage.getItem(StorageKey.REMEMBER_ME);
 
   useEffect(() => {
     if (rememberMe) {
@@ -60,109 +47,152 @@ export const SignIn = () => {
     }
   }, [rememberMe]);
 
+  const handleSubmit = async (values: any) => {
+    if (values.rememberMe) {
+      localStorage.setItem(StorageKey.REMEMBER_ME, 'true');
+      localStorage.setItem(StorageKey.EMAIL, values.email);
+      localStorage.setItem(StorageKey.PASSWORD, values.password);
+    } else {
+      localStorage.removeItem(StorageKey.REMEMBER_ME);
+      localStorage.removeItem(StorageKey.EMAIL);
+      localStorage.removeItem(StorageKey.PASSWORD);
+    }
+
+    await login({
+      email: values.email,
+      password: values.password,
+      callbackUrl,
+    });
+  };
+
   return (
-    <Flex width={'full'} height={'100vh'}>
-      <Flex width={'full'} display={{ base: 'none', md: 'block' }}>
-        <Image
-          src={'/assets/images/collaborate.jpg'}
-          alt={'collaborate'}
-          width={'full'}
-          height={'full'}
-          objectFit={'cover'}
-        />
-      </Flex>
-      <Formik
-        initialValues={initialValues}
-        onSubmit={handleSubmit}
-        validationSchema={VALIDATION.AUTH.loginValidationSchema}
+    <Flex
+      flexDirection={{ base: 'column', md: 'row' }}
+      height="100vh"
+      width="100%"
+    >
+      <Box
+        w={{ base: '0', md: '50%' }}
+        h={'100vh'}
+        display={{ base: 'none', md: 'block' }}
       >
-        {({ values, handleSubmit }) => (
-          <Box width={'full'} p={{ base: 6, lg: 8 }}>
-            <Image
-              src={'/assets/images/hibly-logo.png'}
-              alt={'logo'}
-              width={'120px'}
-              height={'120px'}
-            />
+        <Image
+          src="/assets/images/collaborate.jpg"
+          alt="collaborate"
+          objectFit="cover"
+          width="100%"
+          height="100vh"
+        />
+      </Box>
 
-            <Center width={'full'} flexDirection={'column'}>
-              <VStack gap={2} width={{ base: 'full', lg: '10/12' }}>
-                <BaseText variant={TextVariant.L} weight={TextWeight.Black}>
-                  👋{t('SIGN_IN_TITLE')}
-                </BaseText>
-                <BaseText textAlign={'center'}>{t('SIGN_IN_DESC')}</BaseText>
-              </VStack>
+      {/* Form Section */}
+      <Flex
+        w={{ base: '100%', md: '50%' }}
+        px={{ base: 4, sm: 6, lg: 12 }}
+        py={{ base: 6, md: 8 }}
+        flexDirection="column"
+        justifyContent="space-between"
+      >
+        <Box>
+          <Image
+            src="/assets/images/hibly-logo.png"
+            alt="logo-app"
+            boxSize="80px"
+            objectFit="cover"
+            mb={4}
+          />
 
-              <VStack gap={3} mt={10} width={{ base: 'full', lg: '10/12' }}>
-                <FormTextInput
-                  name={'email'}
-                  required
-                  label={t('PROFILE.EMAIL')}
-                  placeholder={t('PROFILE.EMAIL')}
-                  value={values.email}
-                />
-                <FormTextInput
-                  name={'password'}
-                  required
-                  type={'password'}
-                  label={t('FORM.PASSWORD')}
-                  placeholder={t('FORM.PASSWORD_PLACEHOLDER')}
-                  value={values.password}
-                />
+          <VStack width="full" gap={3}>
+            <BaseText
+              textAlign="center"
+              variant={TextVariant.L}
+              weight={TextWeight.Black}
+            >
+              👋 {t('SIGN_IN_TITLE')}
+            </BaseText>
+            <BaseText textAlign="center">{t('SIGN_IN_DESC')}</BaseText>
 
-                <HStack
-                  width={'full'}
-                  alignItems={'center'}
-                  mt={3}
-                  justifyContent={'space-between'}
-                >
-                  <CheckboxForm
-                    name={'rememberMe'}
-                    size={'md'}
-                    label={t('FORM.REMEMBER_ME')}
+            <Formik
+              initialValues={initialValues}
+              enableReinitialize
+              onSubmit={handleSubmit}
+              validationSchema={VALIDATION.AUTH.loginValidationSchema}
+            >
+              {({ values, handleSubmit }) => (
+                <VStack gap={3} mt={4} mb={2} w="full">
+                  <FormTextInput
+                    name="email"
+                    required
+                    label={t('PROFILE.EMAIL')}
+                    placeholder={t('PROFILE.EMAIL')}
+                    value={values.email}
                   />
-                  <Flex width={'full'} justifyContent={'flex-end'}>
-                    <BaseText
-                      textDecoration={'underline'}
-                      cursor={'pointer'}
-                      onClick={() =>
-                        router.push(APP_ROUTES.AUTH.RESET_PASSWORD)
-                      }
-                    >
-                      {t('FORM.FORGOT_PASSWORD')}
-                    </BaseText>
-                  </Flex>
-                </HStack>
-                <BaseButton
-                  withGradient
-                  width={'full'}
-                  onClick={() => {
-                    handleSubmit();
-                    console.log('values', values);
-                  }}
-                >
-                  {t('COMMON.LOGIN')}
-                </BaseButton>
-              </VStack>
+                  <FormTextInput
+                    name="password"
+                    required
+                    type="password"
+                    label={t('FORM.PASSWORD')}
+                    placeholder={t('FORM.PASSWORD_PLACEHOLDER')}
+                    value={values.password}
+                  />
 
-              <BaseText textAlign={'center'} mt={10}>
-                {t('FORM.DONT_HAVE_AN_ACCOUNT')}{' '}
-                <span
-                  style={{
-                    color: VariablesColors.primary,
-                    cursor: 'pointer',
-                    fontWeight: 'bold',
-                  }}
-                >
-                  {t('FORM.SIGN_UP')}
-                </span>
-              </BaseText>
+                  <HStack
+                    width="full"
+                    alignItems="center"
+                    mt={2}
+                    mb={2}
+                    justifyContent="space-between"
+                  >
+                    <CheckboxForm
+                      name="rememberMe"
+                      size="md"
+                      label={t('FORM.REMEMBER_ME')}
+                    />
+                    <Flex justifyContent={'flex-end'} width={'full'}>
+                      <BaseText
+                        textDecoration="underline"
+                        cursor="pointer"
+                        onClick={() =>
+                          router.push(APP_ROUTES.AUTH.RESET_PASSWORD)
+                        }
+                      >
+                        {t('FORM.FORGOT_PASSWORD')}
+                      </BaseText>
+                    </Flex>
+                  </HStack>
 
-              <LinkFooter />
-            </Center>
-          </Box>
-        )}
-      </Formik>
+                  <BaseButton
+                    withGradient
+                    width="full"
+                    onClick={() => {
+                      handleSubmit();
+                    }}
+                  >
+                    {t('COMMON.LOGIN')}
+                  </BaseButton>
+                </VStack>
+              )}
+            </Formik>
+
+            <BaseText textAlign="center" mb={2}>
+              {t('FORM.DONT_HAVE_AN_ACCOUNT')}{' '}
+              <span
+                style={{
+                  color: VariablesColors.primary,
+                  cursor: 'pointer',
+                  fontWeight: 'bold',
+                }}
+                onClick={() => router.push(APP_ROUTES.AUTH.SIGN_UP)}
+              >
+                {t('FORM.SIGN_UP')}
+              </span>
+            </BaseText>
+          </VStack>
+        </Box>
+
+        <LinkFooter alignItems="flex-end" justifyContent="flex-end" mt={2} />
+      </Flex>
+
       <FloatSwitchColorMode />
     </Flex>
   );

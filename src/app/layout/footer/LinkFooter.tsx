@@ -1,22 +1,15 @@
-import { Flex, Link, Separator } from '@chakra-ui/react';
+import { Flex, Link, Separator, FlexProps } from '@chakra-ui/react';
 import { BaseText, TextVariant } from '_components/custom';
 import { APP_ROUTES } from '_config/routes';
 import { useRouter } from 'next/navigation';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
-export const LinkFooter = () => {
+export const LinkFooter = ({ ...rest }: FlexProps) => {
   const navigate = useRouter();
   const { t } = useTranslation();
   return (
-    <Flex
-      position="absolute"
-      bottom={4}
-      right={4}
-      gap={4}
-      fontSize="sm"
-      zIndex={1}
-    >
+    <Flex {...rest} gap={4} fontSize="sm">
       <Link href={APP_ROUTES.LEGAL_MENTIONS} variant="plain">
         {t('COMMON.LEGAL_MENTIONS')}
       </Link>

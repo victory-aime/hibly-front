@@ -14,19 +14,19 @@ export const APIS = (baseUrl?: string) => {
         path: '/auth/login',
         method: 'POST',
         pathBase: 'UNSECURED_API',
-        showResponse:false
+        showResponse: false,
       }),
       REFRESH: api({
         path: '/auth/refresh-token',
         method: 'POST',
         pathBase: 'UNSECURED_API',
-        showResponse:false
+        showResponse: false,
       }),
       LOGOUT: api({
         path: '/auth/logout',
         method: 'POST',
         pathBase: 'UNSECURED_API',
-        showResponse:false
+        showResponse: false,
       }),
     },
     OTP: {

@@ -1,9 +1,9 @@
-import React, { FC } from 'react'
-import { useField } from 'formik'
-import { Field, Flex, Text, Textarea } from '@chakra-ui/react'
-import { FormTextAreaProps } from './interface/input'
-import { HiOutlineInformationCircle } from 'react-icons/hi'
-import { useTranslation } from 'react-i18next'
+import React, { FC } from 'react';
+import { useField } from 'formik';
+import { Field, Flex, Text, Textarea } from '@chakra-ui/react';
+import { FormTextAreaProps } from './interface/input';
+import { HiOutlineInformationCircle } from 'react-icons/hi';
+import { useTranslation } from 'react-i18next';
 
 const FormTextArea: FC<FormTextAreaProps> = ({
   required = false,
@@ -21,14 +21,14 @@ const FormTextArea: FC<FormTextAreaProps> = ({
   helperMessage,
   autoresize = true,
 }) => {
-  const { t } = useTranslation()
+  const { t } = useTranslation();
   const fieldHookConfig = {
     name,
     validate,
-  }
+  };
 
-  const [field, { touched, error }] = useField(fieldHookConfig)
-  const isError = isReadOnly ? Boolean(error) : !!(touched && Boolean(error))
+  const [field, { touched, error }] = useField(fieldHookConfig);
+  const isError = isReadOnly ? Boolean(error) : !!(touched && Boolean(error));
 
   return (
     <Field.Root id={name} invalid={isError}>
@@ -55,23 +55,28 @@ const FormTextArea: FC<FormTextAreaProps> = ({
         borderRadius={'7px'}
         value={value ?? field.value}
         onChange={(event: never) => {
-          onChangeFunction(event)
+          onChangeFunction(event);
         }}
         readOnly={isReadOnly}
         disabled={isDisabled}
         onBlur={(e) => {
-          field.onBlur(e)
+          field.onBlur(e);
         }}
       />
       {infoMessage || helperMessage ? (
         <Flex p={1} gap={2}>
-          <HiOutlineInformationCircle size={18} color={isError ? 'red' : 'none'} />
-          <Field.HelperText>{infoMessage ? infoMessage : helperMessage ? null : ''}</Field.HelperText>
+          <HiOutlineInformationCircle
+            size={18}
+            color={isError ? 'red' : 'none'}
+          />
+          <Field.HelperText>
+            {infoMessage ? infoMessage : helperMessage ? null : ''}
+          </Field.HelperText>
         </Flex>
       ) : null}
       {isError && <Field.ErrorText>{error}</Field.ErrorText>}
     </Field.Root>
-  )
-}
+  );
+};
 
-export default FormTextArea
+export default FormTextArea;

@@ -1,19 +1,25 @@
-import { toaster } from '_components/ui/toaster'
-import { ToastStatus, DEFAULT_TIME, ToastProps } from './interface/toats'
+import { toaster } from '_components/ui/toaster';
+import { ToastStatus, DEFAULT_TIME, ToastProps } from './interface/toats';
 
 interface CustomToastProps extends ToastProps {
   asPromise?: {
-    promise: Promise<any>
+    promise: Promise<any>;
     config?: {
-      loading?: ToastProps
-      success?: ToastProps
-      error?: ToastProps
-      loader?: () => void
-    }
-  }
+      loading?: ToastProps;
+      success?: ToastProps;
+      error?: ToastProps;
+      loader?: () => void;
+    };
+  };
 }
 
-export const CustomToast = ({ title = 'Notification', type = ToastStatus.SUCCESS, description, duration, asPromise }: CustomToastProps) => {
+export const CustomToast = ({
+  title = 'Notification',
+  type = ToastStatus.SUCCESS,
+  description,
+  duration,
+  asPromise,
+}: CustomToastProps) => {
   if (asPromise) {
     return toaster.promise(asPromise.promise, {
       loading: {
@@ -29,9 +35,9 @@ export const CustomToast = ({ title = 'Notification', type = ToastStatus.SUCCESS
         description: asPromise.config?.error?.description || '',
       },
       finally: () => {
-        asPromise.config?.loader?.()
+        asPromise.config?.loader?.();
       },
-    })
+    });
   }
   return toaster.create({
     title,
@@ -41,5 +47,5 @@ export const CustomToast = ({ title = 'Notification', type = ToastStatus.SUCCESS
     meta: {
       closable: true,
     },
-  })
-}
+  });
+};

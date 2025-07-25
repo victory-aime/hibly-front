@@ -26,7 +26,7 @@
     "RESET_PASSWORD_OTP_MAX_SEND_ATTEMPTS": "You have reached the maximum number of attempts to send the OTP code",
     "RESET_PASSWORD_OTP_EXPIRES_IN": "This code expires in {{expiresIn}}",
     "RESET_PASSWORD_OTP_RETRY_INFO": "You can try again in {{time}}"
-     },
+  },
   "LOGOUT_MESSAGE": "You have successfully logged out. Thank you for using our service. To log in again, please click the button below.",
   "SESSION_EXPIRE": "Session expired",
   "SESSION_MESSAGE": "Your session has expired. Please log in again to continue",

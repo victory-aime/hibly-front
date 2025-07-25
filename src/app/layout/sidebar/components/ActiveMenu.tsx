@@ -1,20 +1,26 @@
-import { Box, Flex, Link, Text, useBreakpointValue } from '@chakra-ui/react'
-import { FC } from 'react'
-import { useRouter } from 'next/navigation'
-import { Dot } from '_assets/svg'
-import { VariablesColors } from '_theme/variables'
-import { hexToRGB } from '_theme/colors'
-import useSideBarStyle from '../hooks/useSidebarStyle'
-import { ActiveMenuProps } from '../types'
-import { useTranslation } from 'react-i18next'
+import { Box, Flex, Link, Text, useBreakpointValue } from '@chakra-ui/react';
+import { FC } from 'react';
+import { useRouter } from 'next/navigation';
+import { Dot } from '_assets/svg';
+import { VariablesColors } from '_theme/variables';
+import { hexToRGB } from '_theme/colors';
+import useSideBarStyle from '../hooks/useSidebarStyle';
+import { ActiveMenuProps } from '../types';
+import { useTranslation } from 'react-i18next';
 
-export const ActiveMenu: FC<ActiveMenuProps> = ({ subLink, sideToggled, onShowSidebar, isActiveLink }) => {
-  const navigate = useRouter()
-  const { t } = useTranslation()
-  const { linkStyle, setMenuItemTextStyle, setMenuItemPointStyle } = useSideBarStyle({
-    sideToggled,
-  })
-  const sidebarConditionInverse = useBreakpointValue({ base: false, lg: true })
+export const ActiveMenu: FC<ActiveMenuProps> = ({
+  subLink,
+  sideToggled,
+  onShowSidebar,
+  isActiveLink,
+}) => {
+  const navigate = useRouter();
+  const { t } = useTranslation();
+  const { linkStyle, setMenuItemTextStyle, setMenuItemPointStyle } =
+    useSideBarStyle({
+      sideToggled,
+    });
+  const sidebarConditionInverse = useBreakpointValue({ base: false, lg: true });
 
   return (
     <Link
@@ -24,18 +30,25 @@ export const ActiveMenu: FC<ActiveMenuProps> = ({ subLink, sideToggled, onShowSi
       ps={'35px'}
       p={'0'}
       onClick={() => {
-        navigate.push(subLink?.path)
+        navigate.push(subLink?.path);
         if (!sidebarConditionInverse) {
-          onShowSidebar()
+          onShowSidebar();
         }
       }}
       h={'auto'}
     >
-      <Box display={'flex'} justifyContent={'center'} alignItems={'center'} width="100%">
+      <Box
+        display={'flex'}
+        justifyContent={'center'}
+        alignItems={'center'}
+        width="100%"
+      >
         <Flex
           width={'full'}
           borderBottomWidth={isActiveLink(subLink?.path) ? '4px' : '0'}
-          borderColor={isActiveLink(subLink?.path) ? hexToRGB('neutral', 0.5) : 'none'}
+          borderColor={
+            isActiveLink(subLink?.path) ? hexToRGB('neutral', 0.5) : 'none'
+          }
           gap={4}
           alignItems={'center'}
           borderRadius={'5px'}
@@ -47,13 +60,27 @@ export const ActiveMenu: FC<ActiveMenuProps> = ({ subLink, sideToggled, onShowSi
           py={'10px'}
         >
           {subLink?.icon ? (
-            <subLink.icon width="14px" height="14px" fill={isActiveLink(subLink.path ?? '') ? VariablesColors.white : VariablesColors.grayScale} />
+            <subLink.icon
+              width="14px"
+              height="14px"
+              fill={
+                isActiveLink(subLink.path ?? '')
+                  ? VariablesColors.white
+                  : VariablesColors.grayScale
+              }
+            />
           ) : (
-            <Dot width="9px" height="9px" fill={setMenuItemPointStyle(subLink.path)} />
+            <Dot
+              width="9px"
+              height="9px"
+              fill={setMenuItemPointStyle(subLink.path)}
+            />
           )}
-          <Text {...setMenuItemTextStyle(subLink.path)}>{t(subLink?.label)}</Text>
+          <Text {...setMenuItemTextStyle(subLink.path)}>
+            {t(subLink?.label)}
+          </Text>
         </Flex>
       </Box>
     </Link>
-  )
-}
+  );
+};

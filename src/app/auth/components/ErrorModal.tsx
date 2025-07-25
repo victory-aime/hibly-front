@@ -8,11 +8,14 @@ import { Session } from 'next-auth';
 import { useTranslation } from 'react-i18next';
 import { VariablesColors } from '_theme/variables';
 import { useAuth } from '_hooks/useAuth';
+import { useRouter } from 'next/navigation';
+import { APP_ROUTES } from '_config/routes';
 
 export const SessionErrorModal = ({ session }: { session: Session | null }) => {
   const { t } = useTranslation();
+  const router = useRouter();
   const [showSessionError, setShowSessionError] = useState(false);
-  const { logout, login, isLoading } = useAuth();
+  const { logout, isLoading } = useAuth();
 
   useEffect(() => {
     if (session?.error === 'RefreshAccessTokenError') {
@@ -21,7 +24,7 @@ export const SessionErrorModal = ({ session }: { session: Session | null }) => {
   }, [session]);
 
   const handleReconnect = () => {
-    login({ otpRequired: true });
+    router.push(APP_ROUTES.AUTH.SIGN_IN);
   };
   const handleSignOut = () => {
     logout();

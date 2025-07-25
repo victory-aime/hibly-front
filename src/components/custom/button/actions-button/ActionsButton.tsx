@@ -1,15 +1,15 @@
-'use client'
+'use client';
 
-import { Flex } from '@chakra-ui/react'
-import { useRouter } from 'next/navigation'
-import React from 'react'
-import { BaseButton } from '../base/baseButton'
-import { IoIosClose } from 'react-icons/io'
-import { ActionButtonTypes } from '_components/custom'
-import { useTranslation } from 'react-i18next'
-import { HiMiniPlusSmall } from 'react-icons/hi2'
-import { CiSaveDown2, CiFilter } from 'react-icons/ci'
-import { CgSync } from 'react-icons/cg'
+import { Flex } from '@chakra-ui/react';
+import { useRouter } from 'next/navigation';
+import React from 'react';
+import { BaseButton } from '../base/baseButton';
+import { IoIosClose } from 'react-icons/io';
+import { ActionButtonTypes } from '_components/custom';
+import { useTranslation } from 'react-i18next';
+import { HiMiniPlusSmall } from 'react-icons/hi2';
+import { CiSaveDown2, CiFilter } from 'react-icons/ci';
+import { CgSync } from 'react-icons/cg';
 
 export const ActionsButton = ({
   cancelTitle,
@@ -27,8 +27,8 @@ export const ActionsButton = ({
   onCancel,
   ...rest
 }: ActionButtonTypes) => {
-  const { t } = useTranslation()
-  const router = useRouter()
+  const { t } = useTranslation();
+  const router = useRouter();
 
   return (
     <Flex {...rest} gap={3}>
@@ -57,23 +57,39 @@ export const ActionsButton = ({
               withGradient
               isLoading={isLoading}
               disabled={isLoading}
-              leftIcon={icon ? icon : requestId ? <CiSaveDown2 /> : <HiMiniPlusSmall />}
+              leftIcon={
+                icon ? icon : requestId ? <CiSaveDown2 /> : <HiMiniPlusSmall />
+              }
             >
               {t(validateTitle)}
             </BaseButton>
           )}
           {onReload && (
-            <BaseButton onClick={onReload} px={'15px'} colorType={'secondary'} withGradient isLoading={isLoading} disabled={isLoading} leftIcon={<CgSync size={14} />}>
+            <BaseButton
+              onClick={onReload}
+              px={'15px'}
+              colorType={'secondary'}
+              withGradient
+              isLoading={isLoading}
+              disabled={isLoading}
+              leftIcon={<CgSync size={14} />}
+            >
               {t(refreshTitle)}
             </BaseButton>
           )}
           {onToggleFilter && (
-            <BaseButton px={'15px'} colorType={'tertiary'} withGradient leftIcon={<CiFilter />} onClick={onToggleFilter}>
+            <BaseButton
+              px={'15px'}
+              colorType={'tertiary'}
+              withGradient
+              leftIcon={<CiFilter />}
+              onClick={onToggleFilter}
+            >
               {t('COMMON.FILTER')}
             </BaseButton>
           )}
         </>
       )}
     </Flex>
-  )
-}
+  );
+};

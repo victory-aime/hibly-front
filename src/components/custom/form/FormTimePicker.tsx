@@ -1,25 +1,38 @@
-import React from 'react'
-import { useField } from 'formik'
-import { Field, Flex } from '@chakra-ui/react'
-import { HiOutlineInformationCircle } from 'react-icons/hi'
-import { BaseText, BaseTooltip } from '_components/custom'
-import { useTranslation } from 'react-i18next'
-import { NativeSelect } from '_components/ui/select-native'
-import { TimeInputProps } from './interface/input'
-import { CiTimer } from 'react-icons/ci'
-import { generateTimeOptions } from './utils/gerenateTime'
+import React from 'react';
+import { useField } from 'formik';
+import { Field, Flex } from '@chakra-ui/react';
+import { HiOutlineInformationCircle } from 'react-icons/hi';
+import { BaseText, BaseTooltip } from '_components/custom';
+import { useTranslation } from 'react-i18next';
+import { NativeSelect } from '_components/ui/select-native';
+import { TimeInputProps } from './interface/input';
+import { CiTimer } from 'react-icons/ci';
+import { generateTimeOptions } from './utils/gerenateTime';
 
-export const FormTimePicker = ({ name, label, required = false, toolTipInfo, isDisabled = false, variant = 'subtle', placeholder = 'Select an option', infoMessage }: TimeInputProps) => {
-  const { t, i18n } = useTranslation()
-  const [field, { touched, error }] = useField(name)
-  const isError = error ? Boolean(error) : !!(touched && Boolean(error))
+export const FormTimePicker = ({
+  name,
+  label,
+  required = false,
+  toolTipInfo,
+  isDisabled = false,
+  variant = 'subtle',
+  placeholder = 'Select an option',
+  infoMessage,
+}: TimeInputProps) => {
+  const { t, i18n } = useTranslation();
+  const [field, { touched, error }] = useField(name);
+  const isError = error ? Boolean(error) : !!(touched && Boolean(error));
 
-  const timeOptions = generateTimeOptions(i18n.language)
+  const timeOptions = generateTimeOptions(i18n.language);
 
   return (
     <Field.Root id={name} invalid={isError}>
       {label && (
-        <Field.Label display={'flex'} gap={'6px'} fontSize={{ base: '14px', md: '16px' }}>
+        <Field.Label
+          display={'flex'}
+          gap={'6px'}
+          fontSize={{ base: '14px', md: '16px' }}
+        >
           {t(label)}
           {required && <BaseText color={'red'}>*</BaseText>}
           {toolTipInfo && (
@@ -61,5 +74,5 @@ export const FormTimePicker = ({ name, label, required = false, toolTipInfo, isD
         </Flex>
       )}
     </Field.Root>
-  )
-}
+  );
+};

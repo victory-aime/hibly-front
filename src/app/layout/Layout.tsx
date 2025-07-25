@@ -1,22 +1,22 @@
-'use client'
+'use client';
 
-import { Box } from '@chakra-ui/react'
-import React, { FunctionComponent, useMemo, useState } from 'react'
-import { Session } from 'next-auth'
-import { Header } from './header'
-import { Sidebar } from './sidebar'
-import { layoutStyle } from './styles'
-import { Container } from './container/Container'
-import { AppAuthProvider } from '_context/provider/auth-provider'
+import { Box } from '@chakra-ui/react';
+import React, { FunctionComponent, useMemo, useState } from 'react';
+import { Session } from 'next-auth';
+import { Header } from './header';
+import { Sidebar } from './sidebar';
+import { layoutStyle } from './styles';
+import { Container } from './container/Container';
+import { AppAuthProvider } from '_context/provider/auth-provider';
 
 export const Layout: FunctionComponent<{
-  children: React.ReactNode
-  session: Session
+  children: React.ReactNode;
+  session: Session;
 }> = ({ children, session }) => {
-  const [isSidebarOpen, setSidebarOpen] = useState(false)
+  const [isSidebarOpen, setSidebarOpen] = useState(false);
   const toggleSidebar = () => {
-    setSidebarOpen(!isSidebarOpen)
-  }
+    setSidebarOpen(!isSidebarOpen);
+  };
 
   const toggledLayoutStyle = useMemo(
     () => ({
@@ -30,16 +30,24 @@ export const Layout: FunctionComponent<{
         lg: isSidebarOpen ? 'calc(100% - 230px)' : 'calc(100% - 70px)',
       },
     }),
-    [isSidebarOpen]
-  )
+    [isSidebarOpen],
+  );
 
   return (
     <AppAuthProvider>
-      <Sidebar sideToggled={isSidebarOpen} onShowSidebar={toggleSidebar} session={session} />
+      <Sidebar
+        sideToggled={isSidebarOpen}
+        onShowSidebar={toggleSidebar}
+        session={session}
+      />
       <Box {...toggledLayoutStyle}>
-        <Header sideToggled={false} onShowSidebar={toggleSidebar} session={session} />
+        <Header
+          sideToggled={false}
+          onShowSidebar={toggleSidebar}
+          session={session}
+        />
         <Container>{children}</Container>
       </Box>
     </AppAuthProvider>
-  )
-}
+  );
+};

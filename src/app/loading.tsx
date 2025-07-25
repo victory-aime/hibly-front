@@ -1,8 +1,8 @@
-'use client'
-import { GlobalLoader } from '_components/custom'
+'use client';
+import { GlobalLoader } from '_components/custom';
 
 const NextLoaderPage = () => {
-  return <GlobalLoader loader />
-}
+  return <GlobalLoader loader />;
+};
 
-export default NextLoaderPage
+export default NextLoaderPage;

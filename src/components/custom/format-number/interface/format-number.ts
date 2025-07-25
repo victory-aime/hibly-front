@@ -1,3 +1,5 @@
+import { ENUM } from '_types/index';
+
 type StyleNumberFormat = 'decimal' | 'percent' | 'currency';
 
 interface BaseFormatNumberProps {
@@ -6,17 +8,7 @@ interface BaseFormatNumberProps {
   minimumDigits?: number;
   notation?: 'compact' | 'standard' | 'scientific' | 'engineering';
   style?: StyleNumberFormat;
-  currencyCode?:
-    | 'USD'
-    | 'EUR'
-    | 'GBP'
-    | 'JPY'
-    | 'CNY'
-    | 'INR'
-    | 'AUD'
-    | 'CAD'
-    | 'CHF'
-    | 'NZD';
+  currencyCode?: ENUM.COMMON.Currency;
 }
 
 export type { BaseFormatNumberProps };

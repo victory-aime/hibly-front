@@ -184,8 +184,8 @@
     }
   },
   "DASHBOARD": {
-    "DESCRIPTION":"This is your HR report so far",
-    "TABLE_COLUMN":{
+    "DESCRIPTION": "This is your HR report so far",
+    "TABLE_COLUMN": {
       "NAME": "NAME",
       "ROLE": "ROLE",
       "DEPARTMENT": "DEPARTMENT",

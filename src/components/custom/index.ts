@@ -2,7 +2,7 @@ export * from './accordion';
 export * from './aspect-ratio';
 export * from './badge';
 export * from './base-text';
-export * from './boxIcon';
+export * from './base-icon';
 export * from './button';
 export * from './container';
 export * from './custom-skeleton';
@@ -14,6 +14,7 @@ export * from './modal';
 export * from './no-data-found';
 export * from './loader';
 export * from './tabs';
+export * from './stats';
 //export * from './rating'
 //export * from './stepper'
 export * from './switch-color';

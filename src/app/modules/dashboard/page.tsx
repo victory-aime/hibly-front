@@ -1,10 +1,13 @@
 'use client';
 
-import { Box, Flex, Grid, GridItem } from '@chakra-ui/react';
+import { Box, Flex, For } from '@chakra-ui/react';
 import {
   BaseBadge,
   BaseContainer,
-  BaseText, ColumnsDataTable,
+  BaseStats,
+  BaseStatsProps,
+  BaseText,
+  ColumnsDataTable,
   DataTableContainer,
   FormTextInput,
   TextVariant,
@@ -15,8 +18,8 @@ import { useTranslation } from 'react-i18next';
 import { Formik, FormikValues } from 'formik';
 import { CiSearch } from 'react-icons/ci';
 import { FiUsers, FiTrendingUp } from 'react-icons/fi';
-import { MetricCard } from '_modules/dashboard/components/MetricCard';
 import { IoIosRemove, IoMdAdd } from 'react-icons/io';
+import { ENUM } from '_types/index';
 
 interface Employee {
   id: number;
@@ -27,12 +30,72 @@ interface Employee {
   joinDate: string;
 }
 
-
 const mockEmployees: Employee[] = [
-  { id: 1, name: 'John Doe', role: 'Developer', department: 'IT', status: 'active', joinDate: '2023-01-15' },
-  { id: 2, name: 'Jane Smith', role: 'Designer', department: 'HR', status: 'active', joinDate: '2023-02-20' },
-  { id: 3, name: 'Mike Johnson', role: 'Manager', department: 'HR', status: 'active', joinDate: '2023-03-10' },
-  { id: 4, name: 'Sarah Wilson', role: 'HR Specialist', department: 'HR', status: 'inactive', joinDate: '2022-12-05' },
+  {
+    id: 1,
+    name: 'John Doe',
+    role: 'Developer',
+    department: 'IT',
+    status: 'active',
+    joinDate: '2023-01-15',
+  },
+  {
+    id: 2,
+    name: 'Jane Smith',
+    role: 'Designer',
+    department: 'HR',
+    status: 'active',
+    joinDate: '2023-02-20',
+  },
+  {
+    id: 3,
+    name: 'Mike Johnson',
+    role: 'Manager',
+    department: 'HR',
+    status: 'active',
+    joinDate: '2023-03-10',
+  },
+  {
+    id: 4,
+    name: 'Sarah Wilson',
+    role: 'HR Specialist',
+    department: 'HR',
+    status: 'inactive',
+    joinDate: '2022-12-05',
+  },
+];
+
+const stats: BaseStatsProps[] = [
+  {
+    icon: <FiUsers size={16} color="white" />,
+    title: 'Total Employees',
+    color: 'red',
+    percent: -0.1,
+    isNumber: true,
+    currency: ENUM.COMMON.Currency.XAF,
+    value: 2500000000,
+  },
+  {
+    icon: <FiTrendingUp size={16} color="white" />,
+    title: 'Job Applicants',
+    color: 'info.500',
+    percent: 0.4,
+    value: 1150,
+  },
+  {
+    icon: <IoMdAdd size={16} color="white" />,
+    title: 'New Employees',
+    color: 'tertiary.500',
+    percent: 0.1,
+    value: 80,
+  },
+  {
+    icon: <IoIosRemove size={16} color="white" />,
+    title: 'Resigned Employees',
+    color: 'red',
+    percent: 0.5,
+    value: 50,
+  },
 ];
 
 export default function Dashboard() {
@@ -40,53 +103,42 @@ export default function Dashboard() {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedRows, setSelectedRows] = useState<Employee[]>([]);
 
-  const filteredEmployees = mockEmployees.filter(employee =>
-    employee.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    employee.role.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    employee.department.toLowerCase().includes(searchTerm.toLowerCase())
+  const filteredEmployees = mockEmployees.filter(
+    (employee) =>
+      employee.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      employee.role.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      employee.department.toLowerCase().includes(searchTerm.toLowerCase()),
   );
 
   const columns: ColumnsDataTable[] = [
     { accessor: 'select', header: '' },
     {
       accessor: 'name',
-      header: ('DASHBOARD.TABLE_COLUMN.NAME'),
+      header: 'DASHBOARD.TABLE_COLUMN.NAME',
       cell: (value: string) => (
         <BaseText variant={TextVariant.M} weight={TextWeight.Medium}>
           {value}
         </BaseText>
-      )
+      ),
     },
     {
       accessor: 'role',
-      header: ('DASHBOARD.TABLE_COLUMN.ROLE'),
+      header: 'DASHBOARD.TABLE_COLUMN.ROLE',
       cell: (value: string) => (
         <BaseText variant={TextVariant.S} color="gray.600">
           {value}
         </BaseText>
-      )
+      ),
     },
     {
       accessor: 'department',
-      header: ('DASHBOARD.TABLE_COLUMN.DEPARTMENT'),
-      cell: (value: string) => (
-        <BaseBadge
-        status={value}
-        type={'department'}
-        />
-      )
+      header: 'DASHBOARD.TABLE_COLUMN.DEPARTMENT',
+      cell: (value: string) => <BaseBadge status={value} type={'department'} />,
     },
     {
       accessor: 'status',
-      header: ('DASHBOARD.TABLE_COLUMN.STATUS'),
-      cell: (value: string) => (
-       <BaseBadge
-       status={value}
-       type={'common'}
-       />
-
-
-      )
+      header: 'DASHBOARD.TABLE_COLUMN.STATUS',
+      cell: (value: string) => <BaseBadge status={value} type={'common'} />,
     },
     {
       accessor: 'actions',
@@ -103,9 +155,9 @@ export default function Dashboard() {
         {
           name: 'delete',
           handleClick: (data: Employee) => console.log('Delete', data),
-        }
-      ]
-    }
+        },
+      ],
+    },
   ];
 
   const handleSearch = (values: FormikValues) => {
@@ -113,7 +165,6 @@ export default function Dashboard() {
   };
 
   const handleRowSelection = (rows: Employee[]) => {
-    setSelectedRows(rows);
     console.log('Selected rows:', rows);
   };
 
@@ -139,64 +190,32 @@ export default function Dashboard() {
         </BaseText>
       </Box>
 
-
-      <Grid templateColumns={{ base: '1fr', md: 'repeat(2, 1fr)', lg: 'repeat(4, 1fr)' }} gap={6}>
-        <GridItem>
-          <MetricCard
-            title="Total Employés"
-            value="3540"
-            icon={<FiUsers size={24} color="white" />}
-            color="blue.500"
-            trend="+25,5%"
-          />
-        </GridItem>
-        <GridItem>
-          <MetricCard
-            title="Job Applicants"
-            value="1150"
-            icon={<FiTrendingUp size={24} color="white" />}
-            color="green.500"
-            trend="+4,10% "
-          />
-        </GridItem>
-        <GridItem>
-          <MetricCard
-            title="New Employees"
-            value="15"
-            icon={<IoMdAdd size={24} color="white" />}
-            color="orange.500"
-            trend="+5,1%"
-          />
-        </GridItem>
-        <GridItem>
-          <MetricCard
-            title="Resigned Employees"
-            value="23"
-            icon={<IoIosRemove size={24} color="white" />}
-            color="purple.500"
-            trend="+5.2%"
-          />
-        </GridItem>
-      </Grid>
+      <Flex gap={4} width={'full'} overflowX={'auto'}>
+        <For each={stats}>
+          {(item, index) => <BaseStats key={index} {...item} />}
+        </For>
+      </Flex>
 
       {/* Section Employés */}
       <BaseContainer>
-        <Formik
-          initialValues={{ search: '' }}
-          onSubmit={handleSearch}
-        >
-          {({ values, handleChange, handleSubmit, setFieldValue }) => (
-            <Flex alignItems="center" justifyContent="space-between" width={'full'} mb={"30px"}
+        <Formik initialValues={{ search: '' }} onSubmit={handleSearch}>
+          {({ values }) => (
+            <Flex
+              alignItems="center"
+              justifyContent="space-between"
+              width={'full'}
+              mb={'30px'}
             >
               <Flex>
                 <BaseText variant={TextVariant.H3}>
-                  {t("DASHBOARD.EMPLOYEE.TITLE")}
+                  {t('DASHBOARD.EMPLOYEE.TITLE')}
                 </BaseText>
               </Flex>
 
-
-
-              <Flex width={{base:'full', lg:'1/2'}} justifyContent={'flex-end'}>
+              <Flex
+                width={{ base: 'full', lg: '1/2' }}
+                justifyContent={'flex-end'}
+              >
                 <FormTextInput
                   name="search"
                   placeholder={t('DASHBOARD.EMPLOYEE.SEARCH')}
@@ -204,9 +223,6 @@ export default function Dashboard() {
                   value={values.search}
                 />
               </Flex>
-
-
-
             </Flex>
           )}
         </Formik>
@@ -220,7 +236,6 @@ export default function Dashboard() {
           pageSize={10}
         />
       </BaseContainer>
-
     </Flex>
   );
 }

@@ -6,7 +6,7 @@ import { useCalendarStyles } from './styles/calendar-styles';
 import { useColorModeValue } from '_components/ui/color-mode';
 import { FC, useState } from 'react';
 import { format } from 'date-fns';
-import { BoxIcon } from '../boxIcon';
+import { BaseIcon } from '../BaseIcon';
 import { IoIosClose } from 'react-icons/io';
 import { COMMON_FORMAT_DATE_HEADER } from 'rise-core-frontend';
 
@@ -83,7 +83,7 @@ export const BaseCalendar: FC<BaseCalendarProps> = (props) => {
         padding={'0'}
       >
         {onCloseButton && (
-          <BoxIcon
+          <BaseIcon
             color={'red'}
             onClick={onCloseButton}
             borderRadius={'50px'}
@@ -91,7 +91,7 @@ export const BaseCalendar: FC<BaseCalendarProps> = (props) => {
             cursor={'pointer'}
           >
             <IoIosClose size={24} />
-          </BoxIcon>
+          </BaseIcon>
         )}
       </Flex>
 

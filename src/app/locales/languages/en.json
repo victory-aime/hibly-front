@@ -84,6 +84,7 @@
     },
     "STATUS": {
       "ACTIVE": "Active",
+      "INACTIVE": "Inactive",
       "PENDING": "Pending",
       "CANCELED": "Canceled",
       "EXPIRED": "Expired"

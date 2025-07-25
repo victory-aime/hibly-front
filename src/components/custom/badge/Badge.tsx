@@ -12,6 +12,28 @@ const getBadgeContent = (
 ): { variant: variantColorType; label: string } => {
   if (!t) return { variant: 'info', label: 'Inconnu' };
 
+  if (type==='common'){
+    switch (status) {
+      case 'active':
+        return { variant: 'success', label: t('COMMON.STATUS.ACTIVE') };
+      case 'inactive':
+        return { variant: 'danger', label: t('COMMON.STATUS.INACTIVE') };
+      default:
+        return { variant: 'success', label: t('inconnu') };
+    }
+  }
+
+  else if (type==='department'){
+    switch (status) {
+      case 'IT':
+        return { variant: 'success', label: 'IT' };
+      case 'HR':
+        return { variant: 'danger', label: 'HR' };
+      default:
+        return { variant: 'success', label: t('inconnu') };
+    }
+  }
+
   switch (status) {
     case 'success':
       return { variant: 'success', label: t('inconnu') };

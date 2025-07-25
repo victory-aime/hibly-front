@@ -2,6 +2,7 @@
 
 import { Box, Flex, Grid, GridItem } from '@chakra-ui/react';
 import {
+  BaseBadge,
   BaseContainer,
   BaseText, ColumnsDataTable,
   DataTableContainer,
@@ -29,8 +30,8 @@ interface Employee {
 
 const mockEmployees: Employee[] = [
   { id: 1, name: 'John Doe', role: 'Developer', department: 'IT', status: 'active', joinDate: '2023-01-15' },
-  { id: 2, name: 'Jane Smith', role: 'Designer', department: 'Design', status: 'active', joinDate: '2023-02-20' },
-  { id: 3, name: 'Mike Johnson', role: 'Manager', department: 'Sales', status: 'active', joinDate: '2023-03-10' },
+  { id: 2, name: 'Jane Smith', role: 'Designer', department: 'HR', status: 'active', joinDate: '2023-02-20' },
+  { id: 3, name: 'Mike Johnson', role: 'Manager', department: 'HR', status: 'active', joinDate: '2023-03-10' },
   { id: 4, name: 'Sarah Wilson', role: 'HR Specialist', department: 'HR', status: 'inactive', joinDate: '2022-12-05' },
 ];
 
@@ -45,10 +46,10 @@ export default function Dashboard() {
     employee.department.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  const ColumnsDataTable = [
-    { accessor: 'select' as const, header: '' },
+  const columns: ColumnsDataTable[] = [
+    { accessor: 'select', header: '' },
     {
-      accessor: 'name' as const,
+      accessor: 'name',
       header: ('DASHBOARD.TABLE_COLUMN.NAME'),
       cell: (value: string) => (
         <BaseText variant={TextVariant.M} weight={TextWeight.Medium}>
@@ -57,7 +58,7 @@ export default function Dashboard() {
       )
     },
     {
-      accessor: 'role' as const,
+      accessor: 'role',
       header: ('DASHBOARD.TABLE_COLUMN.ROLE'),
       cell: (value: string) => (
         <BaseText variant={TextVariant.S} color="gray.600">
@@ -66,61 +67,42 @@ export default function Dashboard() {
       )
     },
     {
-      accessor: 'department' as const,
+      accessor: 'department',
       header: ('DASHBOARD.TABLE_COLUMN.DEPARTMENT'),
       cell: (value: string) => (
-        <Box
-          px={2}
-          py={1}
-          borderRadius="md"
-          bg={value === 'IT' ? 'blue.100' : value === 'Design' ? 'purple.100' : 'gray.100'}
-          display="inline-block"
-        >
-          <BaseText variant={TextVariant.XS} weight={TextWeight.Medium}>
-            {value}
-          </BaseText>
-        </Box>
+        <BaseBadge
+        status={value}
+        type={'department'}
+        />
       )
     },
     {
-      accessor: 'status' as const,
+      accessor: 'status',
       header: ('DASHBOARD.TABLE_COLUMN.STATUS'),
       cell: (value: string) => (
-        <Box
-          px={2}
-          py={1}
-          borderRadius="md"
-          bg={value === 'active' ? 'green.100' : 'red.100'}
-          color={value === 'active' ? 'green.800' : 'red.800'}
-          display="inline-block"
-        >
-          <BaseText variant={TextVariant.XS} weight={TextWeight.Medium}>
-            {value === 'active' ? 'Actif' : 'Inactif'}
-          </BaseText>
-        </Box>
+       <BaseBadge
+       status={value}
+       type={'common'}
+       />
+
+
       )
     },
     {
-      accessor: 'actions' as const,
-      header: ('DASHBOARD.TABLE_COLUMN.ACTIONS'),
+      accessor: 'actions',
+      header: 'Actions',
       actions: [
         {
           name: 'view',
-          title: 'Voir les détails',
           handleClick: (data: Employee) => console.log('View', data),
-          isShown: true
         },
         {
           name: 'edit',
-          title: 'Modifier',
           handleClick: (data: Employee) => console.log('Edit', data),
-          isShown: true
         },
         {
           name: 'delete',
-          title: 'Supprimer',
           handleClick: (data: Employee) => console.log('Delete', data),
-          isShown: true
         }
       ]
     }
@@ -198,46 +180,47 @@ export default function Dashboard() {
       </Grid>
 
       {/* Section Employés */}
-      <BaseContainer
-        title={t("DASHBOARD.EMPLOYEE.TITLE")}
-      >
+      <BaseContainer>
         <Formik
           initialValues={{ search: '' }}
           onSubmit={handleSearch}
         >
           {({ values, handleChange, handleSubmit, setFieldValue }) => (
-            <>
-              <Flex mb={5} gap={4} alignItems="center" justifyContent="space-between" flexWrap="wrap">
+            <Flex alignItems="center" justifyContent="space-between" width={'full'} mb={"30px"}
+            >
+              <Flex>
+                <BaseText variant={TextVariant.H3}>
+                  {t("DASHBOARD.EMPLOYEE.TITLE")}
+                </BaseText>
+              </Flex>
+
+
+
+              <Flex width={{base:'full', lg:'1/2'}} justifyContent={'flex-end'}>
                 <FormTextInput
                   name="search"
                   placeholder={t('DASHBOARD.EMPLOYEE.SEARCH')}
                   rightAccessory={<CiSearch size={20} />}
                   value={values.search}
-                  onChange={(e) => {
-                    handleChange(e);
-                    setSearchTerm(e.target.value);
-                  }}
-                  maxW={{ base: "100%", md: "400px" }}
                 />
-                <BaseText variant={TextVariant.S} color="gray.500">
-                  {filteredEmployees.length} {t('DASHBOARD.EMPLOYEE.NUMBER_FOUND')}
-                </BaseText>
               </Flex>
 
-              <DataTableContainer
-                data={filteredEmployees}
-                columns={ColumnsDataTable}
-                handleRowSelection={handleRowSelection}
-                handleDeleteActionBar={handleDeleteSelected}
-                handleShareActionBar={handleShareSelected}
-                totalItems={filteredEmployees.length}
-                pageSize={10}
-                minH="400px"
-              />
-            </>
+
+
+            </Flex>
           )}
         </Formik>
+        <DataTableContainer
+          data={filteredEmployees}
+          columns={columns}
+          handleRowSelection={handleRowSelection}
+          handleDeleteActionBar={handleDeleteSelected}
+          handleShareActionBar={handleShareSelected}
+          totalItems={filteredEmployees.length}
+          pageSize={10}
+        />
       </BaseContainer>
+
     </Flex>
   );
 }

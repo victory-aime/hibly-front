@@ -78,7 +78,6 @@ export const SignIn = () => {
       >
         {({ values, handleSubmit }) => (
           <Box width={'full'} p={{ base: 6, lg: 8 }}>
-            <BaseText>{JSON.stringify(values)}</BaseText>
             <Image
               src={'/assets/images/hibly-logo.png'}
               alt={'logo'}

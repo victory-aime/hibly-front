@@ -170,5 +170,21 @@
       "SESSION_LAST_ACCESS": "Dernier accès",
       "IP_ADDRESS": "Adresse IP Hôte"
     }
+  },
+  "DASHBOARD": {
+    "DESCRIPTION":"Voici votre rapport RH jusqu'à présent",
+    "TABLE_COLUMN":{
+      "NAME": "NOM",
+      "ROLE": "ROLE",
+      "DEPARTMENT": "DEPARTEMENT",
+      "STATUS": "STATUT",
+      "ACTIONS": "ACTIONS"
+    },
+    "EMPLOYEE": {
+      "TITLE": "Employés",
+      "SEARCH": "Rechercher un employé...",
+      "NUMBER_FOUND": "employé(s) trouvé(s)"
+
+    }
   }
 }

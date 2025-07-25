@@ -11,26 +11,34 @@ const getVariantStyles = (
   variant: ButtonProps['variant'] = 'solid',
   withGradient: boolean = false,
 ): VariantColorStyle => {
-  const color = getColor(colorType, 500);
+  const color = getColor(colorType, 500); // ex: "blue.500"
   const textColor = 'white';
   const gradient = getGradient(colorType);
   const hover = getHoverGradient(colorType);
 
-  if (variant === 'outline') {
-    return {
-      bg: 'transparent',
-      textColor: color,
-      gradient: 'none',
-      hover: `${color}30`,
-    };
+  switch (variant) {
+    case 'subtle':
+      return {
+        bg: `${color}`,
+        textColor: color,
+        gradient: 'none',
+        hover: `${color}30`,
+      };
+    case 'outline':
+      return {
+        bg: 'transparent',
+        textColor: color,
+        gradient: 'none',
+        hover: `${color}30`,
+      };
+    default:
+      return {
+        bg: withGradient ? gradient : color,
+        textColor,
+        gradient: withGradient ? gradient : 'none',
+        hover: withGradient ? hover : `${color}CC`, // 80% opacity
+      };
   }
-
-  return {
-    bg: withGradient ? gradient : color,
-    textColor,
-    gradient,
-    hover: withGradient ? hover : `${color}CC`,
-  };
 };
 
 const BaseButton: FC<ButtonBaseProps> = ({

@@ -126,10 +126,10 @@ const FormTextInput = ({
         </Flex>
       )}
       {infoMessage && !isLoading && (
-            <Flex gap={1} mt={1} alignItems={'center'}>
-              <Field.ErrorIcon width={4} height={4} color={'info.500'} />
-              <Field.HelperText p={1}>{t(infoMessage)}</Field.HelperText>
-            </Flex>
+        <Flex gap={1} mt={1} alignItems={'center'}>
+          <Field.ErrorIcon width={4} height={4} color={'info.500'} />
+          <Field.HelperText p={1}>{t(infoMessage)}</Field.HelperText>
+        </Flex>
       )}
     </Field.Root>
   );

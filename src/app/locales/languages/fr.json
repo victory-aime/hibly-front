@@ -178,8 +178,8 @@
     }
   },
   "DASHBOARD": {
-    "DESCRIPTION":"Voici votre rapport RH jusqu'à présent",
-    "TABLE_COLUMN":{
+    "DESCRIPTION": "Voici votre rapport RH jusqu'à présent",
+    "TABLE_COLUMN": {
       "NAME": "NOM",
       "ROLE": "ROLE",
       "DEPARTMENT": "DEPARTEMENT",

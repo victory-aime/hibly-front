@@ -103,9 +103,7 @@ export const BaseContainer = ({
           {filterComponent}
         </Box>
       )}
-      <Box mt={'30px'}>
-        {children}
-      </Box>
+      <Box mt={'30px'}>{children}</Box>
     </Box>
   );
 };

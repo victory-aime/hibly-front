@@ -17,7 +17,7 @@ import {
   Portal,
 } from '@chakra-ui/react';
 import { BaseButton } from '../button';
-import { BoxIcon } from '../boxIcon';
+import { BaseIcon } from '../BaseIcon';
 import { HiMiniChevronRight, HiMiniChevronLeft } from 'react-icons/hi2';
 import { VariablesColors } from '_theme/variables';
 import { Status } from '_components/ui/status';
@@ -159,14 +159,14 @@ export const BaseAgenda = ({
                   <BaseText variant={TextVariant.M} weight={TextWeight.Bold}>
                     {eventInfo.event.title}
                   </BaseText>
-                  <BoxIcon
+                  <BaseIcon
                     color={'red'}
                     onClick={() => setOpenedPopoverId(null)}
                     boxSize={'20px'}
                     cursor={'pointer'}
                   >
                     <IoIosClose />
-                  </BoxIcon>
+                  </BaseIcon>
                 </Flex>
                 <HStack align="start">
                   <BaseText fontSize="sm">
@@ -205,7 +205,7 @@ export const BaseAgenda = ({
               {t('COMMON.TODAY')}
             </BaseButton>
             <Flex gap={3}>
-              <BoxIcon
+              <BaseIcon
                 color={'none'}
                 borderRadius={'full'}
                 boxSize={'30px'}
@@ -225,8 +225,8 @@ export const BaseAgenda = ({
                   }
                   size={22}
                 />
-              </BoxIcon>
-              <BoxIcon
+              </BaseIcon>
+              <BaseIcon
                 color={'none'}
                 borderRadius={'full'}
                 boxSize={'30px'}
@@ -246,7 +246,7 @@ export const BaseAgenda = ({
                   }
                   size={22}
                 />
-              </BoxIcon>
+              </BaseIcon>
             </Flex>
           </HStack>
           <BaseText

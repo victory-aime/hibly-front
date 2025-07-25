@@ -13,7 +13,7 @@ import { DateRange } from 'react-day-picker';
 import { format } from 'date-fns';
 import { useId, useState } from 'react';
 import { PiCalendarThin } from 'react-icons/pi';
-import { BoxIcon } from '../boxIcon';
+import { BaseIcon } from '../BaseIcon';
 import { IoIosClose } from 'react-icons/io';
 import { FormDatePickerFieldProps } from './interface/input';
 import { BaseText } from '../base-text';
@@ -104,7 +104,7 @@ export const FormDatePicker = ({
             onClick={() => setOpen(true)}
             endElement={
               !!field.value && !isReadOnly && !isDisabled ? (
-                <BoxIcon
+                <BaseIcon
                   color={'red'}
                   borderRadius={'full'}
                   boxSize={'20px'}
@@ -114,7 +114,7 @@ export const FormDatePicker = ({
                   }}
                 >
                   <IoIosClose size={14} />
-                </BoxIcon>
+                </BaseIcon>
               ) : (
                 <Flex alignItems="center" justifyContent="center" mt="5px">
                   <PiCalendarThin />

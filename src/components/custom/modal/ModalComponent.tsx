@@ -11,7 +11,7 @@ import React from 'react';
 import { BaseButton } from '../button';
 import { variantColorType } from '_components/custom/button';
 import { ModalProps } from './interface/modal';
-import { BoxIcon } from '../boxIcon';
+import { BaseIcon } from '../base-icon';
 import { useTranslation } from 'react-i18next';
 import { BaseText, TextVariant } from '_components/custom';
 
@@ -51,9 +51,9 @@ const ModalComponent = ({
       <DialogContent width={'full'} padding={4}>
         <DialogHeader alignItems={'center'} display={'flex'} gap={4}>
           {icon && (
-            <BoxIcon borderRadius={'7px'} color={iconBackgroundColor}>
+            <BaseIcon borderRadius={'7px'} color={iconBackgroundColor}>
               {icon}
-            </BoxIcon>
+            </BaseIcon>
           )}
           <BaseText variant={TextVariant.S}>{t(title)}</BaseText>
         </DialogHeader>

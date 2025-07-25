@@ -4,6 +4,7 @@ import { Props } from './interface/badge';
 import { BaseText, TextVariant } from '../base-text';
 import { variantColorType, getVariantStyles } from '../button';
 import { useTranslation } from 'react-i18next';
+import { hexToRGB } from '_theme/colors';
 
 const getBadgeContent = (
   status?: string,
@@ -12,7 +13,7 @@ const getBadgeContent = (
 ): { variant: variantColorType; label: string } => {
   if (!t) return { variant: 'info', label: 'Inconnu' };
 
-  if (type==='common'){
+  if (type === 'common') {
     switch (status) {
       case 'active':
         return { variant: 'success', label: t('COMMON.STATUS.ACTIVE') };
@@ -21,9 +22,7 @@ const getBadgeContent = (
       default:
         return { variant: 'success', label: t('inconnu') };
     }
-  }
-
-  else if (type==='department'){
+  } else if (type === 'department') {
     switch (status) {
       case 'IT':
         return { variant: 'success', label: 'IT' };
@@ -32,13 +31,8 @@ const getBadgeContent = (
       default:
         return { variant: 'success', label: t('inconnu') };
     }
-  }
-
-  switch (status) {
-    case 'success':
-      return { variant: 'success', label: t('inconnu') };
-    default:
-      return { variant: 'success', label: t('inconnu') };
+  } else {
+    return { variant: 'info', label: t('inconnu') };
   }
 };
 
@@ -47,34 +41,52 @@ export const BaseBadge: FC<Props> = ({
   variant = 'solid',
   label: customLabel,
   color,
-  type = 'cars',
+  type = 'common',
   status,
   ...props
 }) => {
   const { t } = useTranslation();
+
   const { variant: resolvedVariant, label: resolvedLabel } = getBadgeContent(
     status,
     type,
     t,
   );
-  const { bg, gradient, hover, textColor } = getVariantStyles(resolvedVariant);
+
+  const { bg, gradient, hover, textColor } = getVariantStyles(
+    color ?? resolvedVariant,
+    variant,
+    true,
+  );
+
+  const isSubtle = variant === 'subtle';
+  const backgroundColor = isSubtle
+    ? hexToRGB(color ?? 'info', 0.2)
+    : (gradient ?? bg ?? 'none');
 
   return (
     <Badge
       {...props}
       variant={variant}
-      size="lg"
-      borderRadius="7px"
+      size={props.size ?? 'lg'}
+      borderColor={isSubtle ? textColor : undefined}
+      bg={backgroundColor}
+      borderRadius={props.borderRadius ?? '7px'}
       p={props.p ?? 2}
-      bg={gradient ?? bg ?? 'none'}
-      color={color || textColor}
+      color={textColor}
       _hover={{ background: hover ?? `${bg}CC` }}
-      _active={{ background: hover ?? `${bg}AA` }}
+      _active={{
+        background: hover ?? `${bg}AA`,
+      }}
       _disabled={{ background: 'gray.300', cursor: 'not-allowed' }}
     >
-      <BaseText variant={TextVariant.XS} textTransform="capitalize">
-        {customLabel ?? resolvedLabel}
-      </BaseText>
+      {type === 'percent' ? (
+        children
+      ) : (
+        <BaseText variant={TextVariant.XS} textTransform="capitalize">
+          {customLabel ?? resolvedLabel}
+        </BaseText>
+      )}
     </Badge>
   );
 };

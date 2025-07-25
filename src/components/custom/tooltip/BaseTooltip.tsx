@@ -16,6 +16,13 @@ export const BaseTooltip: FC<BaseTooltipProps> = ({
   const id = useId();
   const { t } = useTranslation();
 
+  if (show && !children) {
+    console.warn(
+      'BaseTooltip: "children" prop is required when "show" is true.',
+    );
+    return null;
+  }
+
   if (show) {
     return (
       <Tooltip

@@ -15,7 +15,7 @@ type Placement =
   | 'left-end';
 
 export interface BaseTooltipProps {
-  children: ReactNode;
+  children?: ReactNode;
   message: string;
   placement?: Placement;
   arrow?: boolean;

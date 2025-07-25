@@ -1,16 +1,17 @@
-import { BoxProps, LinkProps, TextProps } from '@chakra-ui/react'
-import { useCallback, useMemo } from 'react'
-import { subItems } from '../types'
-import useIsActive from './useIsActive'
-import { VariablesColors } from '_theme/variables'
+import { BoxProps, LinkProps, TextProps } from '@chakra-ui/react';
+import { useCallback, useMemo } from 'react';
+import { subItems } from '../types';
+import useIsActive from './useIsActive';
+import { VariablesColors } from '_theme/variables';
 
 interface UseSideBarStyleProps {
-  sideToggled: boolean
+  sideToggled: boolean;
 }
 const useSideBarStyle = ({ sideToggled }: UseSideBarStyleProps) => {
-  const { pathname, itHasActiveChildLink } = useIsActive()
+  const { pathname, itHasActiveChildLink } = useIsActive();
 
-  const isActiveLink = (link: string): boolean | undefined => link.startsWith(pathname ?? '')
+  const isActiveLink = (link: string): boolean | undefined =>
+    link.startsWith(pathname ?? '');
 
   const sideBarStyle: BoxProps = useMemo(
     () => ({
@@ -24,8 +25,8 @@ const useSideBarStyle = ({ sideToggled }: UseSideBarStyleProps) => {
       //borderBottomRightRadius: '25px',
       zIndex: { base: '999', md: '10' },
     }),
-    []
-  )
+    [],
+  );
   const toggledSideBarStyle = useMemo(
     () =>
       sideToggled
@@ -34,8 +35,8 @@ const useSideBarStyle = ({ sideToggled }: UseSideBarStyleProps) => {
             ...sideBarStyle,
             w: { base: '100%', md: '220px', lg: '70px' },
           },
-    [sideBarStyle, sideToggled]
-  )
+    [sideBarStyle, sideToggled],
+  );
 
   const textStyle: TextProps = useMemo(
     () => ({
@@ -44,8 +45,8 @@ const useSideBarStyle = ({ sideToggled }: UseSideBarStyleProps) => {
       textTransform: 'capitalize',
       transition: 'all ease-in-out 200ms',
     }),
-    []
-  )
+    [],
+  );
   const setMenuTextStyle = useCallback(
     (links?: subItems) =>
       itHasActiveChildLink(links)
@@ -55,8 +56,8 @@ const useSideBarStyle = ({ sideToggled }: UseSideBarStyleProps) => {
             color: 'white',
           }
         : textStyle,
-    [pathname]
-  )
+    [pathname],
+  );
   const setMenuItemTextStyle = useCallback(
     (link: string) =>
       isActiveLink(link)
@@ -69,10 +70,14 @@ const useSideBarStyle = ({ sideToggled }: UseSideBarStyleProps) => {
             ...textStyle,
             color: 'whiteAlpha.400',
           },
-    [pathname]
-  )
+    [pathname],
+  );
   // Utilisation de useCallback pour définir le style
-  const setMenuItemPointStyle = useCallback((link: string) => (isActiveLink(link) ? VariablesColors.white : VariablesColors.grayScale), [pathname])
+  const setMenuItemPointStyle = useCallback(
+    (link: string) =>
+      isActiveLink(link) ? VariablesColors.white : VariablesColors.grayScale,
+    [pathname],
+  );
 
   const toggledTextStyles = useMemo(
     () =>
@@ -91,8 +96,8 @@ const useSideBarStyle = ({ sideToggled }: UseSideBarStyleProps) => {
             opacity: { base: 1, md: 1, lg: 0 },
             overflow: { base: 'auto', md: 'auto', lg: 'hidden' },
           },
-    [sideToggled, textStyle]
-  )
+    [sideToggled, textStyle],
+  );
   const activeItemStyle: BoxProps = {
     position: 'relative',
     insetStart: '-19px',
@@ -100,12 +105,12 @@ const useSideBarStyle = ({ sideToggled }: UseSideBarStyleProps) => {
     height: '100%',
     width: '30px !important',
     overflow: 'hidden',
-  }
+  };
   const activeIconStyle = {
     position: 'initial',
     width: '30px',
     pointerEvents: 'none',
-  }
+  };
   const linkStyle: LinkProps = {
     position: 'relative',
     fontSize: '14px',
@@ -122,7 +127,7 @@ const useSideBarStyle = ({ sideToggled }: UseSideBarStyleProps) => {
     _hover: {
       textDecoration: 'none',
     },
-  }
+  };
   const activeLinkStyle: LinkProps = {
     position: 'relative',
     fontSize: '14px',
@@ -139,7 +144,7 @@ const useSideBarStyle = ({ sideToggled }: UseSideBarStyleProps) => {
     _hover: {
       textDecoration: 'none',
     },
-  }
+  };
   return {
     linkStyle,
     toggledTextStyles,
@@ -152,6 +157,6 @@ const useSideBarStyle = ({ sideToggled }: UseSideBarStyleProps) => {
     setMenuItemTextStyle,
     activeLinkStyle,
     setMenuItemPointStyle,
-  }
-}
-export default useSideBarStyle
+  };
+};
+export default useSideBarStyle;

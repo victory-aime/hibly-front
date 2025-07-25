@@ -1,9 +1,19 @@
-import { Box, Flex, SimpleGrid, Stack, Table } from '@chakra-ui/react'
-import { FunctionComponent, JSX } from 'react'
-import { Skeleton, SkeletonCircle, SkeletonText } from '_components/ui/skeleton'
-import { BaseButton, CustomSkeletonLoaderProps, LoaderType } from '_components/custom'
+import { Box, Flex, SimpleGrid, Stack, Table } from '@chakra-ui/react';
+import { FunctionComponent, JSX } from 'react';
+import {
+  Skeleton,
+  SkeletonCircle,
+  SkeletonText,
+} from '_components/ui/skeleton';
+import {
+  BaseButton,
+  CustomSkeletonLoaderProps,
+  LoaderType,
+} from '_components/custom';
 
-export const CustomSkeletonLoader: FunctionComponent<CustomSkeletonLoaderProps> = ({
+export const CustomSkeletonLoader: FunctionComponent<
+  CustomSkeletonLoaderProps
+> = ({
   tableColumns = 1,
   tableRows = 5,
   type,
@@ -14,7 +24,7 @@ export const CustomSkeletonLoader: FunctionComponent<CustomSkeletonLoaderProps> 
   numberOfLines = 3,
   colorButton = 'info',
 }) => {
-  const DefaultBlockLoader = <Skeleton height={height} variant={variant} />
+  const DefaultBlockLoader = <Skeleton height={height} variant={variant} />;
 
   const TableLoader = (
     <Table.Root minH={height}>
@@ -22,13 +32,17 @@ export const CustomSkeletonLoader: FunctionComponent<CustomSkeletonLoaderProps> 
         {Array.from({ length: Math.max(1, tableRows) }, (_, j) => (
           <Table.Row key={`StyledTr-${j}`}>
             {Array.from({ length: Math.max(1, tableColumns) }, (_, k) => (
-              <Skeleton key={`StyledTd-${j}-${k}`} height="25px" variant={variant} />
+              <Skeleton
+                key={`StyledTd-${j}-${k}`}
+                height="25px"
+                variant={variant}
+              />
             ))}
           </Table.Row>
         ))}
       </Table.Body>
     </Table.Root>
-  )
+  );
 
   const PublicProductCard = (
     <SimpleGrid columns={{ base: 2, md: 4 }} width="full">
@@ -41,58 +55,82 @@ export const CustomSkeletonLoader: FunctionComponent<CustomSkeletonLoaderProps> 
         </Box>
       ))}
     </SimpleGrid>
-  )
+  );
 
   const DonutChartLoader = (
     <Box height={height} width={width ?? '250px'} position="relative" p={3}>
       <SkeletonCircle width="100%" height="90%" />
-      <Box position="absolute" top="45%" left="50%" transform="translate(-50%, -50%)" width="50%" height="50%" bg="white" zIndex={1} borderRadius="50%" />
+      <Box
+        position="absolute"
+        top="45%"
+        left="50%"
+        transform="translate(-50%, -50%)"
+        width="50%"
+        height="50%"
+        bg="white"
+        zIndex={1}
+        borderRadius="50%"
+      />
     </Box>
-  )
+  );
 
-  const SkeletonTextLoader = <SkeletonText noOfLines={numberOfLines} gap={2} variant={variant} width={width} />
+  const SkeletonTextLoader = (
+    <SkeletonText
+      noOfLines={numberOfLines}
+      gap={2}
+      variant={variant}
+      width={width}
+    />
+  );
 
-  const SkeletonFormLoader = <Skeleton height={height} width={width} variant={variant} />
+  const SkeletonFormLoader = (
+    <Skeleton height={height} width={width} variant={variant} />
+  );
 
-  const SkeletonImage = <SkeletonCircle size={height} />
+  const SkeletonImage = <SkeletonCircle size={height} />;
 
   const SkeletonTextImage = (
-    <Flex gap={direction === 'column' ? 4 : 1} width={width} flexDir={direction} alignItems={'flex-start'}>
+    <Flex
+      gap={direction === 'column' ? 4 : 1}
+      width={width}
+      flexDir={direction}
+      alignItems={'flex-start'}
+    >
       <SkeletonCircle size={height} />
       <SkeletonText noOfLines={numberOfLines} variant={variant} gap={3} />
     </Flex>
-  )
+  );
 
   const SkeletonButton = (
     <Skeleton asChild loading={true} width={width}>
       <BaseButton colorType={colorButton} />
     </Skeleton>
-  )
+  );
 
   const renderSkeletonSwitch = (param: LoaderType): JSX.Element | null => {
     switch (param) {
       case 'DATA_TABLE':
-        return TableLoader
+        return TableLoader;
       case 'DONUT_CHART':
-        return DonutChartLoader
+        return DonutChartLoader;
       case 'PRODUCT_LIST_CARD':
-        return PublicProductCard
+        return PublicProductCard;
       case 'DEFAULT':
-        return DefaultBlockLoader
+        return DefaultBlockLoader;
       case 'TEXT':
-        return SkeletonTextLoader
+        return SkeletonTextLoader;
       case 'TEXT_IMAGE':
-        return SkeletonTextImage
+        return SkeletonTextImage;
       case 'IMAGE':
-        return SkeletonImage
+        return SkeletonImage;
       case 'BUTTON':
-        return SkeletonButton
+        return SkeletonButton;
       case 'FORM':
-        return SkeletonFormLoader
+        return SkeletonFormLoader;
       default:
-        return null
+        return null;
     }
-  }
+  };
 
-  return renderSkeletonSwitch(type ?? 'DEFAULT')
-}
+  return renderSkeletonSwitch(type ?? 'DEFAULT');
+};

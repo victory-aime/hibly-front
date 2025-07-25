@@ -1,12 +1,16 @@
-import React from 'react'
-import { useField } from 'formik'
-import { Input, Field, Flex } from '@chakra-ui/react'
-import { TextInputProps } from './interface/input'
-import { InputGroup } from '_components/ui/input-group'
-import { TbLockBitcoin } from 'react-icons/tb'
-import { HiOutlineInformationCircle } from 'react-icons/hi'
-import { BaseText, BaseTooltip, CustomSkeletonLoader } from '_components/custom'
-import { useTranslation } from 'react-i18next'
+import React from 'react';
+import { useField } from 'formik';
+import { Input, Field, Flex } from '@chakra-ui/react';
+import { TextInputProps } from './interface/input';
+import { InputGroup } from '_components/ui/input-group';
+import { TbLockBitcoin } from 'react-icons/tb';
+import { HiOutlineInformationCircle } from 'react-icons/hi';
+import {
+  BaseText,
+  BaseTooltip,
+  CustomSkeletonLoader,
+} from '_components/custom';
+import { useTranslation } from 'react-i18next';
 
 const FormTextInput = ({
   name,
@@ -26,19 +30,23 @@ const FormTextInput = ({
   toolTipInfo,
   isLoading,
 }: TextInputProps) => {
-  const { t } = useTranslation()
+  const { t } = useTranslation();
   const fieldHookConfig = {
     name,
     validate,
-  }
-  const [field, { touched, error }] = useField(fieldHookConfig)
-  const isError = isReadOnly ? Boolean(error) : touched && Boolean(error)
-  const isPassword = type === 'password'
+  };
+  const [field, { touched, error }] = useField(fieldHookConfig);
+  const isError = isReadOnly ? Boolean(error) : touched && Boolean(error);
+  const isPassword = type === 'password';
 
   return (
     <Field.Root id={name} invalid={isError}>
       {label && (
-        <Field.Label display={'flex'} gap={'6px'} fontSize={{ base: '14px', md: '12px' }}>
+        <Field.Label
+          display={'flex'}
+          gap={'6px'}
+          fontSize={{ base: '14px', md: '12px' }}
+        >
           {isLoading ? (
             <CustomSkeletonLoader type="TEXT" numberOfLines={1} />
           ) : (
@@ -89,7 +97,7 @@ const FormTextInput = ({
             {...field}
             type={type}
             onBlur={(e) => {
-              field?.onBlur(e)
+              field?.onBlur(e);
             }}
             value={field?.value}
             placeholder={t(placeholder)}
@@ -124,7 +132,7 @@ const FormTextInput = ({
             </Flex>
       )}
     </Field.Root>
-  )
-}
+  );
+};
 
-export default FormTextInput
+export default FormTextInput;

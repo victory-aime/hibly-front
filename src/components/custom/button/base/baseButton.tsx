@@ -1,16 +1,20 @@
-import { Button, ButtonProps } from '@chakra-ui/react'
-import React, { FC } from 'react'
-import { ButtonBaseProps, VariantColorStyle } from '_components/custom'
-import { HStack } from '@chakra-ui/react'
-import { LoadingDots } from '../animation/loadingDots'
-import { useTranslation } from 'react-i18next'
-import { Colors, getColor, getGradient, getHoverGradient } from '_theme/colors'
+import { Button, ButtonProps } from '@chakra-ui/react';
+import React, { FC } from 'react';
+import { ButtonBaseProps, VariantColorStyle } from '_components/custom';
+import { HStack } from '@chakra-ui/react';
+import { LoadingDots } from '../animation/loadingDots';
+import { useTranslation } from 'react-i18next';
+import { Colors, getColor, getGradient, getHoverGradient } from '_theme/colors';
 
-const getVariantStyles = (colorType: keyof Colors, variant: ButtonProps['variant'] = 'solid', withGradient: boolean = false): VariantColorStyle => {
-  const color = getColor(colorType, 500)
-  const textColor = 'white'
-  const gradient = getGradient(colorType)
-  const hover = getHoverGradient(colorType)
+const getVariantStyles = (
+  colorType: keyof Colors,
+  variant: ButtonProps['variant'] = 'solid',
+  withGradient: boolean = false,
+): VariantColorStyle => {
+  const color = getColor(colorType, 500);
+  const textColor = 'white';
+  const gradient = getGradient(colorType);
+  const hover = getHoverGradient(colorType);
 
   if (variant === 'outline') {
     return {
@@ -18,7 +22,7 @@ const getVariantStyles = (colorType: keyof Colors, variant: ButtonProps['variant
       textColor: color,
       gradient: 'none',
       hover: `${color}30`,
-    }
+    };
   }
 
   return {
@@ -26,13 +30,27 @@ const getVariantStyles = (colorType: keyof Colors, variant: ButtonProps['variant
     textColor,
     gradient,
     hover: withGradient ? hover : `${color}CC`,
-  }
-}
+  };
+};
 
-const BaseButton: FC<ButtonBaseProps> = ({ children, withGradient = false, rightIcon, colorType = 'primary', status, isLoading = false, leftIcon, variant = 'solid', ...rest }) => {
-  const { t } = useTranslation()
-  const { bg, gradient, hover, textColor } = getVariantStyles(colorType, variant, withGradient)
-  const isOutline = variant === 'outline'
+const BaseButton: FC<ButtonBaseProps> = ({
+  children,
+  withGradient = false,
+  rightIcon,
+  colorType = 'primary',
+  status,
+  isLoading = false,
+  leftIcon,
+  variant = 'solid',
+  ...rest
+}) => {
+  const { t } = useTranslation();
+  const { bg, gradient, hover, textColor } = getVariantStyles(
+    colorType,
+    variant,
+    withGradient,
+  );
+  const isOutline = variant === 'outline';
 
   return (
     <>
@@ -42,7 +60,9 @@ const BaseButton: FC<ButtonBaseProps> = ({ children, withGradient = false, right
             position="relative"
             borderColor={isOutline ? textColor : undefined}
             variant={variant}
-            bg={variant === 'solid' ? (withGradient ? gradient : bg) : undefined}
+            bg={
+              variant === 'solid' ? (withGradient ? gradient : bg) : undefined
+            }
             color={textColor}
             border={isOutline ? '1px solid' : undefined}
             _hover={{
@@ -74,7 +94,9 @@ const BaseButton: FC<ButtonBaseProps> = ({ children, withGradient = false, right
             position="relative"
             borderColor={isOutline ? textColor : undefined}
             variant={variant}
-            bg={variant === 'solid' ? (withGradient ? gradient : bg) : undefined}
+            bg={
+              variant === 'solid' ? (withGradient ? gradient : bg) : undefined
+            }
             color={textColor}
             border={isOutline ? '1px solid' : undefined}
             _hover={{
@@ -131,7 +153,7 @@ const BaseButton: FC<ButtonBaseProps> = ({ children, withGradient = false, right
         </Button>
       )}
     </>
-  )
-}
+  );
+};
 
-export { getVariantStyles, BaseButton }
+export { getVariantStyles, BaseButton };

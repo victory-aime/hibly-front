@@ -46,18 +46,18 @@ export const useAuth = () => {
   }) => {
     try {
       showLoader();
-  
+
       if (otpRequired) {
         localStorage.setItem(StorageKey.OTP_REQUIRED, 'true');
       }
-  
+
       const result = await signIn('credentials', {
         email,
         password,
         redirect: false,
         callbackUrl: callbackUrl ?? APP_ROUTES.HOME,
       });
-  
+
       if (result?.error) {
         handleApiError({
           status: result.status,
@@ -68,7 +68,7 @@ export const useAuth = () => {
         });
         return;
       }
-  
+
       if (result?.ok && result.url) {
         handleApiSuccess({ status: 200, message: 'Connexion réussie' });
         router.replace(result.url);
@@ -77,7 +77,6 @@ export const useAuth = () => {
       hideLoader();
     }
   };
-  
 
   return { logout, login, isLoading };
 };

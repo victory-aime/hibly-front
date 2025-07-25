@@ -16,16 +16,18 @@ export const authOptions = {
       },
       async authorize(credentials) {
         try {
-
-                const res = await axios.post(APIS(process.env.NEXT_PUBLIC_BACKEND_URL).AUTH.LOGIN.url, {
-            email: credentials?.email,
-            password: credentials?.password,
-          });
+          const res = await axios.post(
+            APIS(process.env.NEXT_PUBLIC_BACKEND_URL).AUTH.LOGIN.url,
+            {
+              email: credentials?.email,
+              password: credentials?.password,
+            },
+          );
           const data = res.data;
           if (!data.access_token || !data.refresh_token) {
             throw new Error('Invalid credentials');
           }
-      
+
           const decoded = jwtDecode<{ sub: string }>(data.access_token);
           return {
             id: decoded.sub,
@@ -36,8 +38,7 @@ export const authOptions = {
           console.error('Authorize error:', error);
           return null;
         }
-      }
-      
+      },
     }),
   ],
   jwt: {
@@ -48,7 +49,11 @@ export const authOptions = {
     async jwt({ token, user }: { token: any; user?: any }) {
       const now = Math.floor(Date.now() / 1000);
       if (user) {
-        const decoded = jwtDecode<{ exp: number, role: string, permissions: string[] }>(user.access_token);
+        const decoded = jwtDecode<{
+          exp: number;
+          role: string;
+          permissions: string[];
+        }>(user.access_token);
 
         return {
           ...token,
@@ -65,7 +70,16 @@ export const authOptions = {
       }
       try {
         const refreshed = await refreshAccessToken(token.refresh_token);
-        const decoded = jwtDecode<{ exp: number, role: string, permissions: string[] }>(refreshed.access_token);
+
+        if (!refreshed?.access_token || !refreshed?.refresh_token) {
+          throw new Error('Invalid refresh response');
+        }
+
+        const decoded = jwtDecode<{
+          exp: number;
+          role: string;
+          permissions: string[];
+        }>(refreshed.access_token);
 
         return {
           ...token,
@@ -83,8 +97,12 @@ export const authOptions = {
     },
 
     async session({ session, token }: { session: any; token: any }) {
-      session.access_token = token.access_token ? encrypted(token.access_token) : null;
-      session.refresh_token = token.refresh_token ? encrypted(token.refresh_token) : null;
+      session.access_token = token.access_token
+        ? encrypted(token.access_token)
+        : null;
+      session.refresh_token = token.refresh_token
+        ? encrypted(token.refresh_token)
+        : null;
       session.expires_at = token.expires_at ?? null;
       session.roles = token.role ?? null;
       session.permissions = token.permissions ?? [];

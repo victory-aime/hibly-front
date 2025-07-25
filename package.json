@@ -8,7 +8,7 @@
     "build": "next build",
     "start": "next start --port 5000",
     "lint": "next lint",
-    "commit": "git add . && cz"
+    "commit": "prettier --write . && git add . && cz"
   },
   "config": {
     "commitizen": {
@@ -17,7 +17,7 @@
   },
   "lint-staged": {
     "*.{js,ts, json, md}": [
-      "prettier --write"
+      "prettier --write ."
     ]
   },
   "dependencies": {

@@ -1,25 +1,39 @@
-'use client'
+'use client';
 
-import { Field, Flex, Group, PinInput } from '@chakra-ui/react'
-import { useTranslation } from 'react-i18next'
-import { useField } from 'formik'
-import { OtpInputProps } from '_components/custom/form/interface/input'
-import { FC } from 'react'
-import { BaseText } from '_components/custom'
-import * as React from 'react'
-import { hexToRGB } from '_theme/colors'
+import { Field, Flex, Group, PinInput } from '@chakra-ui/react';
+import { useTranslation } from 'react-i18next';
+import { useField } from 'formik';
+import { OtpInputProps } from '_components/custom/form/interface/input';
+import { FC } from 'react';
+import { BaseText } from '_components/custom';
+import * as React from 'react';
+import { hexToRGB } from '_theme/colors';
 
-export const FormOtpInput: FC<OtpInputProps> = ({ name, label, validate, isReadOnly = false, required = false, infoMessage, count = 6, attached = false, isDisabled }) => {
-  const { t } = useTranslation()
-  const fieldHookConfig = { name, validate }
-  const [field, { touched, error }, { setValue }] = useField(fieldHookConfig)
+export const FormOtpInput: FC<OtpInputProps> = ({
+  name,
+  label,
+  validate,
+  isReadOnly = false,
+  required = false,
+  infoMessage,
+  count = 6,
+  attached = false,
+  isDisabled,
+}) => {
+  const { t } = useTranslation();
+  const fieldHookConfig = { name, validate };
+  const [field, { touched, error }, { setValue }] = useField(fieldHookConfig);
 
-  const isError = isReadOnly ? Boolean(error) : touched && Boolean(error)
+  const isError = isReadOnly ? Boolean(error) : touched && Boolean(error);
 
   return (
     <Field.Root id={name} invalid={isError} alignItems={'center'}>
       {label && (
-        <Field.Label display="flex" gap="6px" fontSize={{ base: '14px', md: '12px' }}>
+        <Field.Label
+          display="flex"
+          gap="6px"
+          fontSize={{ base: '14px', md: '12px' }}
+        >
           {t(label)}
           {required && <BaseText color="red"> * </BaseText>}
         </Field.Label>
@@ -30,7 +44,7 @@ export const FormOtpInput: FC<OtpInputProps> = ({ name, label, validate, isReadO
         count={count}
         value={field.value || ['', '', '', '', '', '']}
         onValueChange={(e) => {
-          setValue(e.value)
+          setValue(e.value);
         }}
         size="xl"
         disabled={isReadOnly || isDisabled}
@@ -45,7 +59,13 @@ export const FormOtpInput: FC<OtpInputProps> = ({ name, label, validate, isReadO
                 index={index}
                 borderRadius={8}
                 bg={field.value?.[index] ? 'white' : hexToRGB('lighter', 0.15)}
-                borderColor={field.value?.[index] ? (isError ? 'red' : 'primary.800') : 'lighter.500'}
+                borderColor={
+                  field.value?.[index]
+                    ? isError
+                      ? 'red'
+                      : 'primary.800'
+                    : 'lighter.500'
+                }
                 borderWidth={1.5}
                 animation={isError ? 'shake' : undefined}
                 color={'black'}
@@ -71,5 +91,5 @@ export const FormOtpInput: FC<OtpInputProps> = ({ name, label, validate, isReadO
         </Flex>
       )}
     </Field.Root>
-  )
-}
+  );
+};

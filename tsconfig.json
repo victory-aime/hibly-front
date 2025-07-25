@@ -32,7 +32,7 @@
       "_modules/*": ["./src/app/modules/*"],
       "_context/*": ["./src/app/context/*"],
       "_locales/*": ["./src/app/locales/*"],
-     "_store/*": ["./src/store/*"],
+      "_store/*": ["./src/store/*"],
       "_types/*": ["./src/types/*"]
     }
   },

@@ -1,36 +1,52 @@
-'use client'
+'use client';
 
-import dynamic from 'next/dynamic'
-import { ConfirmCommand, NoDataFoundLottie, LoaderAnimation, DeleteAnimation, TrashAnimation, TrashAnimationV2, ThinkingAnimation } from '_lottie/json'
+import dynamic from 'next/dynamic';
+import {
+  ConfirmCommand,
+  NoDataFoundLottie,
+  LoaderAnimation,
+  DeleteAnimation,
+  TrashAnimation,
+  TrashAnimationV2,
+  ThinkingAnimation,
+} from '_lottie/json';
 
-const Lottie = dynamic(() => import('lottie-react'), { ssr: false })
+const Lottie = dynamic(() => import('lottie-react'), { ssr: false });
 
 const LottieAnimation = () => {
-  return <Lottie animationData={ConfirmCommand} />
-}
+  return <Lottie animationData={ConfirmCommand} />;
+};
 
 const NoDataFoundLottieAnimation = () => {
-  return <Lottie animationData={NoDataFoundLottie} />
-}
+  return <Lottie animationData={NoDataFoundLottie} />;
+};
 
 const LoaderLottie = () => {
-  return <Lottie animationData={LoaderAnimation} />
-}
+  return <Lottie animationData={LoaderAnimation} />;
+};
 
 const DeleteLottie = () => {
-  return <Lottie animationData={DeleteAnimation} />
-}
+  return <Lottie animationData={DeleteAnimation} />;
+};
 
 const TrashLottieAnimation = () => {
-  return <Lottie animationData={TrashAnimation} />
-}
+  return <Lottie animationData={TrashAnimation} />;
+};
 
 const TrashLottieAnimationV2 = () => {
-  return <Lottie animationData={TrashAnimationV2} />
-}
+  return <Lottie animationData={TrashAnimationV2} />;
+};
 
 const ThinkingLottieAnimation = () => {
-  return <Lottie animationData={ThinkingAnimation} />
-}
+  return <Lottie animationData={ThinkingAnimation} />;
+};
 
-export { LottieAnimation, NoDataFoundLottieAnimation, LoaderLottie, DeleteLottie, TrashLottieAnimation, TrashLottieAnimationV2, ThinkingLottieAnimation }
+export {
+  LottieAnimation,
+  NoDataFoundLottieAnimation,
+  LoaderLottie,
+  DeleteLottie,
+  TrashLottieAnimation,
+  TrashLottieAnimationV2,
+  ThinkingLottieAnimation,
+};

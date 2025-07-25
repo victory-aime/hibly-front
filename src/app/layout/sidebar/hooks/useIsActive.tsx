@@ -16,43 +16,43 @@
  *  - `itHasActiveChildLink(links?: subItems): boolean` : indique si un des sous-liens est actif.
  *  - `pathname: string` : le chemin d'URL actuel.
  */
-import { usePathname } from 'next/navigation'
-import { subItems } from '../types'
+import { usePathname } from 'next/navigation';
+import { subItems } from '../types';
 
 const useIsActive = () => {
-  const pathname = usePathname()
+  const pathname = usePathname();
 
   /**
    * Détermine si un lien est actif en fonction de la route actuelle.
    * Gère les liens parents (`/modules/hotel`, `/modules/cars`, etc.)
    */
   const isActiveLink = (link: string) => {
-    if (!pathname || !link) return false
+    if (!pathname || !link) return false;
 
     // Cas particulier pour la racine modules
     if (link === '/modules') {
-      return pathname === '/modules'
+      return pathname === '/modules';
     }
     // Actif si on est sur le lien exact ou une sous-route
-    return pathname === link || pathname.startsWith(`${link}/`)
-  }
+    return pathname === link || pathname.startsWith(`${link}/`);
+  };
 
   /**
    * Vérifie si un des sous-liens est actif (utile pour ouvrir un sous-menu)
    */
   const itHasActiveChildLink = (links?: subItems): boolean => {
-    if (!pathname || !links) return false
+    if (!pathname || !links) return false;
 
     return links.some((link) => {
-      if (!link?.path) return false
-      return pathname === link.path || pathname.startsWith(`${link.path}/`)
-    })
-  }
+      if (!link?.path) return false;
+      return pathname === link.path || pathname.startsWith(`${link.path}/`);
+    });
+  };
 
-  return { isActiveLink, itHasActiveChildLink, pathname }
-}
+  return { isActiveLink, itHasActiveChildLink, pathname };
+};
 
-export default useIsActive
+export default useIsActive;
 
 // /**
 //  * Hook personnalisé pour déterminer si une route ou un sous-lien est actif

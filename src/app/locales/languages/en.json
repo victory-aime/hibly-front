@@ -1,6 +1,7 @@
 {
   "SIDE_BAR": {
     "DASHBOARD": "Dashboard",
+    "EMPLOYEE": "Employees",
     "SETTINGS": "Parameters",
     "PROFILE": "My profile",
     "HELP": "Help & Support"
@@ -78,6 +79,8 @@
     "SELECT_OPTIONS": "Select an option",
     "ITEMS_SELECTED": "selected",
     "CONFIRM_TEXT": "To confirm, type <<{{value}}>> in the box below.",
+    "ADD": "Add",
+    "DOWNLOAD": "Download",
     "WARNING": {
       "TITLE": "Caution",
       "DESC": "This action is irreversible. Once you've done it, there's no turning back. Are you sure you want to continue?"
@@ -195,7 +198,8 @@
     "EMPLOYEE": {
       "TITLE": "Employee",
       "SEARCH": "Search for an employee...",
-      "NUMBER_FOUND": "employee(s) found"
+      "NUMBER_FOUND": "employee(s) found",
+      "MANAGE": "Manage your employee"
     }
   }
 }

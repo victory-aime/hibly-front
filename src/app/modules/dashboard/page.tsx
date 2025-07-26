@@ -169,13 +169,10 @@ export default function Dashboard() {
   };
 
   const handleDeleteSelected = () => {
-    console.log('Delete selected employees:', selectedRows);
-    // Logique de suppression
   };
 
   const handleShareSelected = () => {
-    console.log('Share selected employees:', selectedRows);
-    // Logique de partage
+
   };
 
   return (

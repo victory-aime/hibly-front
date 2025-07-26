@@ -41,4 +41,5 @@ export interface ActionButtonTypes extends FlexProps {
   onCancel?: () => void;
   onReload?: () => void;
   onToggleFilter?: () => void;
+  onDownload?: () => void;
 }

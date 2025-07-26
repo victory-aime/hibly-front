@@ -10,6 +10,7 @@ import { useTranslation } from 'react-i18next';
 import { HiMiniPlusSmall } from 'react-icons/hi2';
 import { CiSaveDown2, CiFilter } from 'react-icons/ci';
 import { CgSync } from 'react-icons/cg';
+import { IoDocumentTextOutline } from 'react-icons/io5';
 
 export const ActionsButton = ({
   cancelTitle,
@@ -25,6 +26,7 @@ export const ActionsButton = ({
   onToggleFilter,
   onReload,
   onCancel,
+  onDownload,
   ...rest
 }: ActionButtonTypes) => {
   const { t } = useTranslation();
@@ -36,6 +38,20 @@ export const ActionsButton = ({
         <BaseButton isLoading={isLoading} />
       ) : (
         <>
+          {onDownload && (
+            <BaseButton
+              withGradient
+              colorType={'secondary'}
+              variant={'outline'}
+              onClick={onDownload}
+              isLoading={isLoading}
+              disabled={isLoading}
+              px={'15px'}
+              leftIcon={<IoDocumentTextOutline />}
+            >
+              {t('COMMON.DOWNLOAD')}
+            </BaseButton>
+          )}
           {cancelTitle && (
             <BaseButton
               px={'15px'}
@@ -64,6 +80,7 @@ export const ActionsButton = ({
               {t(validateTitle)}
             </BaseButton>
           )}
+
           {onReload && (
             <BaseButton
               onClick={onReload}

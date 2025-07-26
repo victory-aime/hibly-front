@@ -5,7 +5,6 @@ import {
   BaseBadge,
   BaseContainer,
   BaseStats,
-  BaseStatsProps,
   BaseText,
   ColumnsDataTable,
   DataTableContainer,
@@ -17,91 +16,11 @@ import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Formik, FormikValues } from 'formik';
 import { CiSearch } from 'react-icons/ci';
-import { FiUsers, FiTrendingUp } from 'react-icons/fi';
-import { IoIosRemove, IoMdAdd } from 'react-icons/io';
-import { ENUM } from '_types/index';
-
-interface Employee {
-  id: number;
-  name: string;
-  role: string;
-  department: string;
-  status: 'active' | 'inactive';
-  joinDate: string;
-}
-
-const mockEmployees: Employee[] = [
-  {
-    id: 1,
-    name: 'John Doe',
-    role: 'Developer',
-    department: 'IT',
-    status: 'active',
-    joinDate: '2023-01-15',
-  },
-  {
-    id: 2,
-    name: 'Jane Smith',
-    role: 'Designer',
-    department: 'HR',
-    status: 'active',
-    joinDate: '2023-02-20',
-  },
-  {
-    id: 3,
-    name: 'Mike Johnson',
-    role: 'Manager',
-    department: 'HR',
-    status: 'active',
-    joinDate: '2023-03-10',
-  },
-  {
-    id: 4,
-    name: 'Sarah Wilson',
-    role: 'HR Specialist',
-    department: 'HR',
-    status: 'inactive',
-    joinDate: '2022-12-05',
-  },
-];
-
-const stats: BaseStatsProps[] = [
-  {
-    icon: <FiUsers size={16} color="white" />,
-    title: 'Total Employees',
-    color: 'red',
-    percent: -0.1,
-    isNumber: true,
-    currency: ENUM.COMMON.Currency.XAF,
-    value: 2500000000,
-  },
-  {
-    icon: <FiTrendingUp size={16} color="white" />,
-    title: 'Job Applicants',
-    color: 'info.500',
-    percent: 0.4,
-    value: 1150,
-  },
-  {
-    icon: <IoMdAdd size={16} color="white" />,
-    title: 'New Employees',
-    color: 'tertiary.500',
-    percent: 0.1,
-    value: 80,
-  },
-  {
-    icon: <IoIosRemove size={16} color="white" />,
-    title: 'Resigned Employees',
-    color: 'red',
-    percent: 0.5,
-    value: 50,
-  },
-];
+import { mockEmployees, stats } from '_utils/data/employee';
 
 export default function Dashboard() {
   const { t } = useTranslation();
   const [searchTerm, setSearchTerm] = useState('');
-  const [selectedRows, setSelectedRows] = useState<Employee[]>([]);
 
   const filteredEmployees = mockEmployees.filter(
     (employee) =>
@@ -146,15 +65,15 @@ export default function Dashboard() {
       actions: [
         {
           name: 'view',
-          handleClick: (data: Employee) => console.log('View', data),
+          handleClick: (data) => console.log('View', data),
         },
         {
           name: 'edit',
-          handleClick: (data: Employee) => console.log('Edit', data),
+          handleClick: (data) => console.log('Edit', data),
         },
         {
           name: 'delete',
-          handleClick: (data: Employee) => console.log('Delete', data),
+          handleClick: (data) => console.log('Delete', data),
         },
       ],
     },
@@ -164,20 +83,8 @@ export default function Dashboard() {
     setSearchTerm(values.search || '');
   };
 
-  const handleRowSelection = (rows: Employee[]) => {
-    console.log('Selected rows:', rows);
-  };
-
-  const handleDeleteSelected = () => {
-  };
-
-  const handleShareSelected = () => {
-
-  };
-
   return (
-    <Flex width="100%" flexDirection="column" gap={6}>
-      {/* En-tête du dashboard */}
+    <BaseContainer border={'none'}>
       <Box>
         <BaseText variant={TextVariant.H1} weight={TextWeight.Bold} mb={2}>
           {t('WELCOME', { username: 'Victory' })}
@@ -192,8 +99,6 @@ export default function Dashboard() {
           {(item, index) => <BaseStats key={index} {...item} />}
         </For>
       </Flex>
-
-      {/* Section Employés */}
       <BaseContainer>
         <Formik initialValues={{ search: '' }} onSubmit={handleSearch}>
           {({ values }) => (
@@ -226,13 +131,10 @@ export default function Dashboard() {
         <DataTableContainer
           data={filteredEmployees}
           columns={columns}
-          handleRowSelection={handleRowSelection}
-          handleDeleteActionBar={handleDeleteSelected}
-          handleShareActionBar={handleShareSelected}
           totalItems={filteredEmployees.length}
           pageSize={10}
         />
       </BaseContainer>
-    </Flex>
+    </BaseContainer>
   );
 }

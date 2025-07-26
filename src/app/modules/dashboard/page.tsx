@@ -114,17 +114,13 @@ export default function Dashboard() {
 
   const handleRowSelection = (rows: Employee[]) => {
     setSelectedRows(rows);
-    console.log('Selected rows:', rows);
   };
 
   const handleDeleteSelected = () => {
-    console.log('Delete selected employees:', selectedRows);
-    // Logique de suppression
   };
 
   const handleShareSelected = () => {
-    console.log('Share selected employees:', selectedRows);
-    // Logique de partage
+
   };
 
   return (

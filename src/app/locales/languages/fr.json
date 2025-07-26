@@ -1,6 +1,7 @@
 {
   "SIDE_BAR": {
     "DASHBOARD": "Tableau de bord",
+    "EMPLOYEE": "Employés",
     "SETTINGS": "Paramètres",
     "PROFILE": "Mon profil",
     "HELP": "Aide & Support"
@@ -25,7 +26,9 @@
     "RESET_PASSWORD_OTP_RESEND": "Renvoyer le code",
     "RESET_PASSWORD_OTP_MAX_SEND_ATTEMPTS": "Vous avez atteint le nombre maximum de tentatives d'envoie de code OTP",
     "RESET_PASSWORD_OTP_EXPIRES_IN": "Ce code expire dans {{expiresIn}}",
-    "RESET_PASSWORD_OTP_RETRY_INFO": "Vous pouvez réessayer dans {{time}}"
+    "RESET_PASSWORD_OTP_RETRY_INFO": "Vous pouvez réessayer dans {{time}}",
+    "SELECT_JOB": "Tous les job",
+    "SELECT_OFFICES": "Tous les bureaux"
   },
   "SESSION_EXPIRE": "Session expirée",
   "SESSION_MESSAGE": "Votre session a expiré. Veuillez vous reconnecter pour continuer.",
@@ -76,6 +79,8 @@
     "SELECT_OPTIONS": "Sélectionner une option",
     "ITEMS_SELECTED": "sélectionné(s)",
     "CONFIRM_TEXT": "Pour confirmer, tapez <<{{value}}>> dans la case ci-dessous.",
+    "ADD": "Ajouter",
+    "DOWNLOAD": "Télécharger",
     "WARNING": {
       "TITLE": "Attention",
       "DESC": "Cette action est irréversible. Une fois effectuée, vous ne pourriez plus faire marche arrière. Êtes-vous sûr de vouloir continuer ?"
@@ -184,8 +189,8 @@
     "EMPLOYEE": {
       "TITLE": "Employés",
       "SEARCH": "Rechercher un employé...",
-      "NUMBER_FOUND": "employé(s) trouvé(s)"
-
+      "NUMBER_FOUND": "employé(s) trouvé(s)",
+      "MANAGE": "Géré vos employés"
     }
   }
 }

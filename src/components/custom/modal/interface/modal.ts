@@ -5,7 +5,7 @@ import { variantColorType } from '_components/custom';
 interface ModalProps extends DialogRootProps {
   title?: string | undefined;
   isOpen?: boolean | undefined;
-  onChange?: (value: any) => void;
+  onChange?: (value: boolean) => void;
   showCloseButton?: boolean;
   ignoreFooter?: boolean;
   modalType?: 'dialog' | 'alertdialog' | undefined;
@@ -14,6 +14,7 @@ interface ModalProps extends DialogRootProps {
   colorSaveButton?: variantColorType;
   isFull?: boolean | undefined;
   icon?: ReactNode;
+  logoSrc?: string;
   iconBackgroundColor?: string;
   onClick?: () => void;
   isLoading?: boolean;

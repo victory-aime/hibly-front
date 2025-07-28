@@ -1,9 +1,9 @@
 import { Formik } from 'formik';
 import {
   BaseButton,
+  BaseModal,
   BaseText,
   FormOtpInput,
-  ModalComponent,
   ModalOpenProps,
   TextVariant,
   TextWeight,
@@ -11,7 +11,7 @@ import {
 import { TbLockPassword } from 'react-icons/tb';
 import { FC } from 'react';
 import { maskValue } from '_components/custom/form/utils/maskValue';
-import { Box, Center, VStack, Image } from '@chakra-ui/react';
+import { Box, Center, Image, VStack } from '@chakra-ui/react';
 import { VariablesColors } from '_theme/variables';
 import { useTranslation } from 'react-i18next';
 import { useCountdown } from '_hooks/remainingTime';
@@ -58,7 +58,7 @@ export const OtpChallengeHandler: FC<IOTPModal> = ({
     >
       {({ handleSubmit, resetForm }) =>
         isModal ? (
-          <ModalComponent
+          <BaseModal
             iconBackgroundColor={'primary.800'}
             icon={<TbLockPassword size={18} />}
             title={'PROFILE.OTP_CHECK_TITLE'}
@@ -119,7 +119,7 @@ export const OtpChallengeHandler: FC<IOTPModal> = ({
                 </BaseText>
               )}
             </VStack>
-          </ModalComponent>
+          </BaseModal>
         ) : (
           <Box width={'full'} p={{ base: 6, lg: 8 }}>
             <Image

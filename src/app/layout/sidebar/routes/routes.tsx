@@ -1,6 +1,6 @@
-import { GroupIcon, HomeIcon } from '_assets/svg';
+import { GroupIcon, HomeIcon, TeamIcon } from '_assets/svg';
 import { ILink } from '../types';
-import { FaUserCog, FaCog } from 'react-icons/fa';
+import { FaCog, FaUserCog } from 'react-icons/fa';
 import { SIDE_BAR_ROUTES } from '_config/routes';
 
 export const MENU_BY_ROLE: Record<string, ILink[]> = {
@@ -14,6 +14,11 @@ export const MENU_BY_ROLE: Record<string, ILink[]> = {
       path: SIDE_BAR_ROUTES.EMPLOYEE,
       label: 'SIDE_BAR.EMPLOYEE',
       icon: GroupIcon,
+    },
+    {
+      path: SIDE_BAR_ROUTES.TEAM,
+      label: 'Teams',
+      icon: TeamIcon,
     },
     {
       menuKey: 'settings',

@@ -8,13 +8,13 @@ import { IoIosClose } from 'react-icons/io';
 import { ActionButtonTypes } from '_components/custom';
 import { useTranslation } from 'react-i18next';
 import { HiMiniPlusSmall } from 'react-icons/hi2';
-import { CiSaveDown2, CiFilter } from 'react-icons/ci';
+import { CiFilter, CiSaveDown2 } from 'react-icons/ci';
 import { CgSync } from 'react-icons/cg';
 import { IoDocumentTextOutline } from 'react-icons/io5';
 
 export const ActionsButton = ({
-  cancelTitle,
-  validateTitle,
+  cancelTitle = 'COMMON.CANCEL',
+  validateTitle = 'COMMON.VALIDATE',
   requestId,
   isLoading = false,
   cancelColor = 'danger',
@@ -41,7 +41,7 @@ export const ActionsButton = ({
           {onDownload && (
             <BaseButton
               withGradient
-              colorType={'secondary'}
+              colorType={'info'}
               variant={'outline'}
               onClick={onDownload}
               isLoading={isLoading}
@@ -52,7 +52,7 @@ export const ActionsButton = ({
               {t('COMMON.DOWNLOAD')}
             </BaseButton>
           )}
-          {cancelTitle && (
+          {onCancel && (
             <BaseButton
               px={'15px'}
               withGradient
@@ -65,7 +65,18 @@ export const ActionsButton = ({
             </BaseButton>
           )}
 
-          {validateTitle && (
+          {onToggleFilter && (
+            <BaseButton
+              px={'15px'}
+              colorType={'tertiary'}
+              withGradient
+              leftIcon={<CiFilter />}
+              onClick={onToggleFilter}
+            >
+              {t('COMMON.FILTER')}
+            </BaseButton>
+          )}
+          {onClick && (
             <BaseButton
               onClick={onClick}
               px={'15px'}
@@ -80,7 +91,6 @@ export const ActionsButton = ({
               {t(validateTitle)}
             </BaseButton>
           )}
-
           {onReload && (
             <BaseButton
               onClick={onReload}
@@ -92,17 +102,6 @@ export const ActionsButton = ({
               leftIcon={<CgSync size={14} />}
             >
               {t(refreshTitle)}
-            </BaseButton>
-          )}
-          {onToggleFilter && (
-            <BaseButton
-              px={'15px'}
-              colorType={'tertiary'}
-              withGradient
-              leftIcon={<CiFilter />}
-              onClick={onToggleFilter}
-            >
-              {t('COMMON.FILTER')}
             </BaseButton>
           )}
         </>

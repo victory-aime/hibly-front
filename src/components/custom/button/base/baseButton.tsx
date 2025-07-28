@@ -1,7 +1,6 @@
-import { Button, ButtonProps } from '@chakra-ui/react';
+import { Button, ButtonProps, HStack } from '@chakra-ui/react';
 import React, { FC } from 'react';
 import { ButtonBaseProps, VariantColorStyle } from '_components/custom';
-import { HStack } from '@chakra-ui/react';
 import { LoadingDots } from '../animation/loadingDots';
 import { useTranslation } from 'react-i18next';
 import { Colors, getColor, getGradient, getHoverGradient } from '_theme/colors';
@@ -11,7 +10,7 @@ const getVariantStyles = (
   variant: ButtonProps['variant'] = 'solid',
   withGradient: boolean = false,
 ): VariantColorStyle => {
-  const color = getColor(colorType, 500); // ex: "blue.500"
+  const color = getColor(colorType, 500);
   const textColor = 'white';
   const gradient = getGradient(colorType);
   const hover = getHoverGradient(colorType);
@@ -36,7 +35,7 @@ const getVariantStyles = (
         bg: withGradient ? gradient : color,
         textColor,
         gradient: withGradient ? gradient : 'none',
-        hover: withGradient ? hover : `${color}CC`, // 80% opacity
+        hover: withGradient ? hover : `${color}CC`,
       };
   }
 };
@@ -46,7 +45,6 @@ const BaseButton: FC<ButtonBaseProps> = ({
   withGradient = false,
   rightIcon,
   colorType = 'primary',
-  status,
   isLoading = false,
   leftIcon,
   variant = 'solid',

@@ -1,8 +1,8 @@
 'use client';
 
 import { VStack } from '@chakra-ui/react';
-import { FormTextArea, FormTextInput, CustomToast } from '_components/custom';
-import { ModalComponent } from '_components/custom/modal';
+import { CustomToast, FormTextArea, FormTextInput } from '_components/custom';
+import { BaseModal } from '_components/custom/modal';
 import { ModalOpenProps } from '_components/custom/modal/interface/modal';
 import { hexToRGB } from '_theme/colors';
 import { Formik, FormikHelpers, FormikValues } from 'formik';
@@ -10,6 +10,7 @@ import React, { FC, useState } from 'react';
 import { FcIdea } from 'react-icons/fc';
 import axios from 'axios';
 import { useTranslation } from 'react-i18next';
+
 export interface InitialFormValues {
   subject: string;
   message: string;
@@ -69,7 +70,7 @@ const ThinkBoxModal: FC<ModalOpenProps> = ({ isOpen, onChange }) => {
       onSubmit={handleSubmitForm}
     >
       {({ handleSubmit, setFieldValue }) => (
-        <ModalComponent
+        <BaseModal
           open={isOpen}
           onChange={() => onChange(!isOpen)}
           title={'THINK_BOX.TITLE'}
@@ -96,7 +97,7 @@ const ThinkBoxModal: FC<ModalOpenProps> = ({ isOpen, onChange }) => {
               }
             />
           </VStack>
-        </ModalComponent>
+        </BaseModal>
       )}
     </Formik>
   );

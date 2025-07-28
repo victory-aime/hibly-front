@@ -1,7 +1,7 @@
 import { createListCollection } from '@chakra-ui/react';
 import { BaseStatsProps } from '_components/custom';
 import { FiTrendingUp, FiUsers } from 'react-icons/fi';
-import {ENUM} from '_types/index'
+import { ENUM } from '_types/index';
 import { IoIosRemove, IoMdAdd } from 'react-icons/io';
 
 interface Employee {

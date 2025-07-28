@@ -1,7 +1,11 @@
 import { Flex, FlexProps } from '@chakra-ui/react';
 import React, { FC } from 'react';
 
-export const BaseIcon: FC<FlexProps> = ({ children, color, ...rest }) => {
+export const BaseIcon: FC<FlexProps> = ({
+  children,
+  color = 'primary.500',
+  ...rest
+}) => {
   return (
     <Flex
       alignItems={'center'}

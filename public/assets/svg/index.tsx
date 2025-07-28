@@ -10,6 +10,7 @@ import CarsIcon from './cars.svg';
 import ParkingIcon from './parking.svg';
 import LockIcon from './lock.svg';
 import GroupIcon from './group-line.svg';
+import TeamIcon from './team.svg';
 
 export {
   ListMenu,
@@ -24,4 +25,5 @@ export {
   CarsIcon,
   ParkingIcon,
   GroupIcon,
+  TeamIcon,
 };

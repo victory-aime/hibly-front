@@ -1,7 +1,7 @@
 import { Flex, For, VStack } from '@chakra-ui/react';
 import {
+  BaseModal,
   BaseText,
-  ModalComponent,
   ModalOpenProps,
   TextVariant,
 } from '_components/custom';
@@ -61,7 +61,7 @@ export const SelectLanguages: FC<IProps> = ({ onChange, isOpen, language }) => {
   }, [language]);
 
   return (
-    <ModalComponent
+    <BaseModal
       iconBackgroundColor={'secondary.500'}
       icon={<ImFlag />}
       open={isOpen}
@@ -110,6 +110,6 @@ export const SelectLanguages: FC<IProps> = ({ onChange, isOpen, language }) => {
           </For>
         </Flex>
       </VStack>
-    </ModalComponent>
+    </BaseModal>
   );
 };

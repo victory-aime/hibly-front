@@ -42,5 +42,18 @@ export const APIS = (baseUrl?: string) => {
         handleErrorManually: false,
       }),
     },
+    TEAM: {
+      GET_ALL: api({
+        path: '/team',
+        method: 'GET',
+        pathBase: 'SECURED_API',
+        showResponse: false,
+      }),
+      CREATE: api({
+        path: '/team/create',
+        method: 'POST',
+        pathBase: 'SECURED_API',
+      }),
+    },
   };
 };

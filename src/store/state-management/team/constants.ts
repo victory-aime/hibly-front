@@ -1,0 +1,4 @@
+export enum TEAM_KEYS {
+  GET_ALL_TEAM = 'GET_ALL_TEAM',
+  CREATE_TEAM = 'CREATE_TEAM',
+}

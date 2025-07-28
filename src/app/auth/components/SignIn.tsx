@@ -3,19 +3,19 @@
 import {
   BaseButton,
   BaseText,
+  CheckboxForm,
   FloatSwitchColorMode,
   FormTextInput,
   TextVariant,
   TextWeight,
-  CheckboxForm,
 } from '_components/custom';
 import { APP_ROUTES } from '_config/routes';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { Box, Center, Flex, HStack, Image, VStack } from '@chakra-ui/react';
+import { Box, Flex, HStack, Image, VStack } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from '_hooks/useAuth';
 import { LinkFooter } from '../../layout/footer';
-import { Formik } from 'formik';
+import { Formik, FormikValues } from 'formik';
 import { VariablesColors } from '_theme/variables';
 import { VALIDATION } from '_types/index';
 import { useEffect, useState } from 'react';
@@ -26,28 +26,28 @@ export const SignIn = () => {
   const router = useRouter();
   const callbackUrl = useSearchParams()?.get('callbackUrl') || APP_ROUTES.HOME;
   const { login } = useAuth();
-
   const [initialValues, setInitialValues] = useState({
     email: '',
     password: '',
     rememberMe: false,
   });
 
-  const rememberMe =
-    typeof window !== 'undefined' &&
-    localStorage.getItem(StorageKey.REMEMBER_ME);
-
   useEffect(() => {
-    if (rememberMe) {
-      setInitialValues({
-        email: localStorage.getItem(StorageKey.EMAIL) || '',
-        password: localStorage.getItem(StorageKey.PASSWORD) || '',
-        rememberMe: rememberMe === 'true',
-      });
-    }
-  }, [rememberMe]);
+    if (typeof window !== 'undefined') {
+      const isRemember = localStorage.getItem(StorageKey.REMEMBER_ME);
 
-  const handleSubmit = async (values: any) => {
+      console.log('isRemember', isRemember);
+      if (isRemember) {
+        setInitialValues({
+          email: localStorage.getItem(StorageKey.EMAIL) || '',
+          password: localStorage.getItem(StorageKey.PASSWORD) || '',
+          rememberMe: isRemember === 'true',
+        });
+      }
+    }
+  }, []);
+
+  const handleSubmit = async (values: FormikValues) => {
     if (values.rememberMe) {
       localStorage.setItem(StorageKey.REMEMBER_ME, 'true');
       localStorage.setItem(StorageKey.EMAIL, values.email);
@@ -85,7 +85,6 @@ export const SignIn = () => {
         />
       </Box>
 
-      {/* Form Section */}
       <Flex
         w={{ base: '100%', md: '50%' }}
         px={{ base: 4, sm: 6, lg: 12 }}
@@ -115,7 +114,10 @@ export const SignIn = () => {
             <Formik
               initialValues={initialValues}
               enableReinitialize
-              onSubmit={handleSubmit}
+              onSubmit={async (values, actions) => {
+                await handleSubmit(values);
+                actions.resetForm();
+              }}
               validationSchema={VALIDATION.AUTH.loginValidationSchema}
             >
               {({ values, handleSubmit }) => (

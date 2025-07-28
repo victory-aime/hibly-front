@@ -19,8 +19,6 @@ export const CheckboxForm: FC<CheckBoxProps> = ({
   const isError = error ? !!error : !!(touched && error);
   const { setValue } = helpers;
 
-  console.log('field', field);
-
   return (
     <Fieldset.Root id={name} invalid={isError}>
       {items && (

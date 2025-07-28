@@ -1,4 +1,4 @@
-import ModalComponent from './ModalComponent';
+import BaseModal from './BaseModal';
 import { DeleteModalAnimation } from './DeleteModal';
 
 export type {
@@ -6,4 +6,4 @@ export type {
   ModalOpenProps,
   DeleteModalActions,
 } from './interface/modal';
-export { ModalComponent, DeleteModalAnimation };
+export { BaseModal, DeleteModalAnimation };

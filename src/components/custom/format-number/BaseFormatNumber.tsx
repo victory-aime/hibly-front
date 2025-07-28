@@ -1,9 +1,9 @@
 'use client';
 
 import { FormatNumber } from '@chakra-ui/react';
-import { FC, useEffect, useState } from 'react';
+import { FC, useState } from 'react';
 import { BaseFormatNumberProps } from './interface/format-number';
-import { ModalComponent } from '../modal';
+import { BaseModal } from '../modal';
 import { CiWarning } from 'react-icons/ci';
 import { VariablesColors } from '_theme/variables';
 import { BaseText, TextVariant } from '../base-text';
@@ -37,7 +37,7 @@ export const BaseFormatNumber: FC<BaseFormatNumberProps> = ({
         maximumFractionDigits={style === 'percent' ? maximumDigits : 0}
         minimumFractionDigits={style === 'percent' ? minimumDigits : 0}
       />
-      <ModalComponent
+      <BaseModal
         title={'Attention'}
         icon={<CiWarning />}
         iconBackgroundColor={VariablesColors.orange}
@@ -54,7 +54,7 @@ export const BaseFormatNumber: FC<BaseFormatNumberProps> = ({
           NB : Ce popup se fermera automatiquement lorsque vous aurez changer la
           devise
         </BaseText>
-      </ModalComponent>
+      </BaseModal>
     </>
   );
 };

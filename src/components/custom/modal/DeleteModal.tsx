@@ -1,7 +1,7 @@
 'use client';
 
 import { Center } from '@chakra-ui/react';
-import { ModalComponent, DeleteModalActions } from '_components/custom';
+import { BaseModal, DeleteModalActions } from '_components/custom';
 import React, { FC, useEffect, useState } from 'react';
 import { DeleteLottie } from '_lottie/animations/LottieAnimation';
 import { VariablesColors } from '_theme/variables';
@@ -31,7 +31,7 @@ export const DeleteModalAnimation: FC<DeleteModalActions> = ({
   }, [isLoading, isOpen, onChange]);
 
   return (
-    <ModalComponent
+    <BaseModal
       icon={<FaTrashAlt color={VariablesColors.white} size={20} />}
       title={title}
       open={isOpen}
@@ -48,6 +48,6 @@ export const DeleteModalAnimation: FC<DeleteModalActions> = ({
       ) : (
         <>{children}</>
       )}
-    </ModalComponent>
+    </BaseModal>
   );
 };

@@ -16,4 +16,5 @@ export const SIDE_BAR_ROUTES = {
   DASHBOARD: '/modules/dashboard',
   EMPLOYEE: '/modules/employees',
   PROFILE: '/modules/profile',
+  TEAM: '/modules/team',
 };

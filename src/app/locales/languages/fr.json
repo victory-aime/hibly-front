@@ -2,6 +2,10 @@
   "SIDE_BAR": {
     "DASHBOARD": "Tableau de bord",
     "EMPLOYEE": "Employés",
+    "TIME_OFF": "Temps libre",
+    "MY_TIME_OFF": "Mes temps libres",
+    "TEAM_TIME_OFF": "Temps libre des équipes",
+    "EMPLOYEE_TIME_OFF": "Temps libre des employés",
     "SETTINGS": "Paramètres",
     "PROFILE": "Mon profil",
     "HELP": "Aide & Support"
@@ -191,6 +195,10 @@
       "SEARCH": "Rechercher un employé...",
       "NUMBER_FOUND": "employé(s) trouvé(s)",
       "MANAGE": "Géré vos employés"
+    },
+    "TIME_OFF": {
+      "REQUEST_TIME_LIST": "Liste de temps de demande",
+      "EMPLOYEE_TIME_OFF": "Temps libre des employés"
     }
   }
 }

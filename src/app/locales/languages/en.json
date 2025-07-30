@@ -2,6 +2,10 @@
   "SIDE_BAR": {
     "DASHBOARD": "Dashboard",
     "EMPLOYEE": "Employees",
+    "TIME_OFF": "Time off",
+    "MY_TIME_OFF": "My time off",
+    "TEAM_TIME_OFF": "Team time off",
+    "EMPLOYEE_TIME_OFF": "Employees time off",
     "SETTINGS": "Parameters",
     "PROFILE": "My profile",
     "HELP": "Help & Support"
@@ -200,6 +204,10 @@
       "SEARCH": "Search for an employee...",
       "NUMBER_FOUND": "employee(s) found",
       "MANAGE": "Manage your employee"
+    },
+    "TIME_OFF": {
+      "REQUEST_TIME_LIST": "Request time list",
+      "EMPLOYEE_TIME_OFF": "Employee time off"
     }
   }
 }

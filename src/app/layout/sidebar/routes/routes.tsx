@@ -1,6 +1,6 @@
 import { GroupIcon, HomeIcon, TeamIcon } from '_assets/svg';
 import { ILink } from '../types';
-import { FaCog, FaUserCog } from 'react-icons/fa';
+import { FaCog, FaRegClock, FaUserCog } from 'react-icons/fa';
 import { SIDE_BAR_ROUTES } from '_config/routes';
 
 export const MENU_BY_ROLE: Record<string, ILink[]> = {
@@ -19,6 +19,26 @@ export const MENU_BY_ROLE: Record<string, ILink[]> = {
       path: SIDE_BAR_ROUTES.TEAM,
       label: 'Teams',
       icon: TeamIcon,
+    },
+    {
+      menuKey: 'time',
+      path: '',
+      label: 'SIDE_BAR.TIME_OFF',
+      icon: FaRegClock,
+      subItems: [
+        {
+          path: SIDE_BAR_ROUTES.MY_TIME_OFF,
+          label: 'SIDE_BAR.MY_TIME_OFF',
+        },
+        {
+          path: SIDE_BAR_ROUTES.TEAM_TIME_OFF,
+          label: 'SIDE_BAR.TEAM_TIME_OFF',
+        },
+        {
+          path: SIDE_BAR_ROUTES.EMPLOYEE_TIME_OFF,
+          label: 'SIDE_BAR.EMPLOYEE_TIME_OFF',
+        },
+      ],
     },
     {
       menuKey: 'settings',

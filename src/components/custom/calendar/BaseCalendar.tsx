@@ -6,9 +6,9 @@ import { useCalendarStyles } from './styles/calendar-styles';
 import { useColorModeValue } from '_components/ui/color-mode';
 import { FC, useState } from 'react';
 import { format } from 'date-fns';
-import { BaseIcon } from '../BaseIcon';
 import { IoIosClose } from 'react-icons/io';
 import { COMMON_FORMAT_DATE_HEADER } from 'rise-core-frontend';
+import { BaseIcon } from '_components/custom';
 
 interface CommonProps {
   blockedDates?: (Date | { from: Date; to: Date })[];

@@ -6,6 +6,10 @@
     "MY_TIME_OFF": "My time off",
     "TEAM_TIME_OFF": "Team time off",
     "EMPLOYEE_TIME_OFF": "Employees time off",
+    "ATTENDANCE": "Attendance",
+    "MY_ATTENDANCE": "My attendance",
+    "TEAM_ATTENDANCE": "Team attendance",
+    "EMPLOYEE_ATTENDANCE": "Employee attendance",
     "SETTINGS": "Parameters",
     "PROFILE": "My profile",
     "HELP": "Help & Support"
@@ -116,7 +120,8 @@
     "ACTIVATE_ACCOUNT": "Activate my account",
     "ENABLED": "Enabled",
     "fr": "French",
-    "en": "English"
+    "en": "English",
+    "HOURS": "{{count}} Hours"
   },
   "DRAG_DROP": {
     "TITLE": "Drag and drop files here, or click to select",
@@ -208,6 +213,24 @@
     "TIME_OFF": {
       "REQUEST_TIME_LIST": "Request time list",
       "EMPLOYEE_TIME_OFF": "Employee time off"
+    },
+    "ATTENDANCE": {
+      "MY_ATTENDANCE": {
+        "TITLE": "My attendance",
+        "DESCRIPTION": "Manage your attendances",
+        "WORK_SCHEDULE": "Work Schedule",
+        "LOGGED_TIME": "Logged time",
+        "PAID_TIME": "Paid Time",
+        "OVERTIME": "Overtime"
+      },
+      "TEAM_ATTENDANCE": {
+        "TITLE": "Team attendance",
+        "DESCRIPTION": "Manage team attendance"
+      },
+      "EMPLOYEE_ATTENDANCE": {
+        "TITLE": "Employee attendance",
+        "DESCRIPTION": "Manage employee attendance"
+      }
     }
   }
 }

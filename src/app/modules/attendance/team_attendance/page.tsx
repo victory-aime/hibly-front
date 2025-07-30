@@ -7,24 +7,21 @@ import {
   ColumnsDataTable,
   DataTableContainer,
   FormSelect,
-  FormTextInput,
   TextVariant,
   TextWeight,
 } from '_components/custom';
-import { Flex } from '@chakra-ui/react';
-import React, { useState } from 'react';
-import { Formik, FormikValues } from 'formik';
-import { CiSearch } from 'react-icons/ci';
 import { useTranslation } from 'react-i18next';
+import React, { useState } from 'react';
 import {
   jobCollection,
   mockEmployees,
   officesCollection,
 } from '_utils/data/employee';
-import { BaseCalendar } from '_components/custom/calendar/BaseCalendar';
+import { Formik, FormikValues } from 'formik';
+import { Flex } from '@chakra-ui/react';
 import { FormDatePicker } from '_components/custom/form/FormDatePicker';
 
-export default function EmployeesTimeOffPage() {
+export default function TeamAttendancePage() {
   const { t } = useTranslation();
   const [searchTerm, setSearchTerm] = useState('');
 
@@ -88,75 +85,66 @@ export default function EmployeesTimeOffPage() {
   const handleSearch = (values: FormikValues) => {
     setSearchTerm(values.search || '');
   };
+
   return (
     <BaseContainer
-      title={'DASHBOARD.TIME_OFF.EMPLOYEE_TIME_OFF'}
+      title={'DASHBOARD.ATTENDANCE.TEAM_ATTENDANCE.TITLE'}
+      description={'DASHBOARD.ATTENDANCE.TEAM_ATTENDANCE.DESCRIPTION'}
       border={'none'}
-      withActionButtons
-      actionsButtonProps={{
-        isLoading: false,
-        validateTitle: 'COMMON.ADD',
-        onDownload() {
-          console.log('download');
-        },
-      }}
     >
-      <Formik initialValues={{ search: '' }} onSubmit={handleSearch}>
-        {({ values, setFieldValue }) => (
-          <Flex
-            flexDirection={{ base: 'column', lg: 'row' }}
-            alignItems={{ base: 'stretch', lg: 'center' }}
-            justifyContent="space-between"
-            width={'full'}
-            mb={'30px'}
-            gap={4}
-          >
+      <BaseContainer>
+        <Formik initialValues={{ search: '' }} onSubmit={handleSearch}>
+          {({ values, setFieldValue }) => (
             <Flex
-              width={{ base: 'full', lg: '1/2' }}
-              justifyContent={'flex-start'}
-            >
-              <FormTextInput
-                name="search"
-                placeholder={t('DASHBOARD.EMPLOYEE.SEARCH')}
-                rightAccessory={<CiSearch size={20} />}
-                value={values.search}
-              />
-            </Flex>
-
-            <Flex
+              flexDirection={{ base: 'column', lg: 'row' }}
+              alignItems={{ base: 'stretch', lg: 'center' }}
+              justifyContent="space-between"
               width={'full'}
-              flexDirection={{ base: 'column', sm: 'row' }}
-              justifyContent={{ lg: 'flex-end' }}
-              gap={3}
+              mb={'30px'}
+              gap={4}
             >
-              <FormDatePicker
-                name={'date'}
-                mode={'range'}
-                placeholder={'JJ/MM/YY - JJ/MM/YY'}
-              />
-
-              <FormSelect
-                name="offices"
-                listItems={officesCollection}
-                setFieldValue={setFieldValue}
-                placeholder={t('FORM.SELECT_OFFICES')}
-              />
-              <FormSelect
-                name="languages"
-                listItems={jobCollection}
-                setFieldValue={setFieldValue}
-                placeholder={t('FORM.SELECT_JOB')}
-              />
+              <Flex width={{ base: 'full', lg: '1/2' }}>
+                <FormDatePicker
+                  name={'date'}
+                  mode={'range'}
+                  placeholder={'JJ/MM/YY - JJ/MM/YY'}
+                />
+              </Flex>
+              <Flex
+                width={'full'}
+                flexDirection={{ base: 'column', sm: 'row' }}
+                justifyContent={{ lg: 'flex-end' }}
+                gap={3}
+              >
+                <FormSelect
+                  name="offices"
+                  listItems={officesCollection}
+                  setFieldValue={setFieldValue}
+                  placeholder={t('FORM.SELECT_OFFICES')}
+                />
+                <FormSelect
+                  name="languages"
+                  listItems={jobCollection}
+                  setFieldValue={setFieldValue}
+                  placeholder={t('FORM.SELECT_JOB')}
+                />
+                <FormSelect
+                  name="languages"
+                  listItems={jobCollection}
+                  setFieldValue={setFieldValue}
+                  placeholder={t('FORM.SELECT_JOB')}
+                />
+              </Flex>
             </Flex>
-          </Flex>
-        )}
-      </Formik>
-      <DataTableContainer
-        data={filteredEmployees}
-        columns={columns}
-        totalItems={filteredEmployees.length}
-        pageSize={10}
-      />
+          )}
+        </Formik>
+        <DataTableContainer
+          data={filteredEmployees}
+          columns={columns}
+          totalItems={filteredEmployees.length}
+          pageSize={10}
+        />
+      </BaseContainer>
     </BaseContainer>
   );
 }

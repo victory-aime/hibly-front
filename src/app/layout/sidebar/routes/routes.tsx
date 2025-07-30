@@ -1,6 +1,6 @@
 import { GroupIcon, HomeIcon, TeamIcon } from '_assets/svg';
 import { ILink } from '../types';
-import { FaCog, FaRegClock, FaUserCog } from 'react-icons/fa';
+import { FaCalendarAlt, FaCog, FaRegClock, FaUserCog } from 'react-icons/fa';
 import { SIDE_BAR_ROUTES } from '_config/routes';
 
 export const MENU_BY_ROLE: Record<string, ILink[]> = {
@@ -37,6 +37,26 @@ export const MENU_BY_ROLE: Record<string, ILink[]> = {
         {
           path: SIDE_BAR_ROUTES.EMPLOYEE_TIME_OFF,
           label: 'SIDE_BAR.EMPLOYEE_TIME_OFF',
+        },
+      ],
+    },
+    {
+      menuKey: 'attendance',
+      path: '',
+      label: 'SIDE_BAR.ATTENDANCE',
+      icon: FaCalendarAlt,
+      subItems: [
+        {
+          path: SIDE_BAR_ROUTES.MY_ATTENDANCE,
+          label: 'SIDE_BAR.MY_ATTENDANCE',
+        },
+        {
+          path: SIDE_BAR_ROUTES.TEAM_ATTENDANCE,
+          label: 'SIDE_BAR.TEAM_ATTENDANCE',
+        },
+        {
+          path: SIDE_BAR_ROUTES.EMPLOYEE_ATTENDANCE,
+          label: 'SIDE_BAR.EMPLOYEE_ATTENDANCE',
         },
       ],
     },

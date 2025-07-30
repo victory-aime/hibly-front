@@ -85,6 +85,7 @@ interface SwitchProps extends HTMLChakraProps<'switch'> {
 interface FormColorPickerProps extends TextInputProps {}
 
 interface FormDatePickerFieldProps extends TextInputProps {
+  displayFormat?: 'default' | 'short';
   mode: 'single' | 'range';
 }
 

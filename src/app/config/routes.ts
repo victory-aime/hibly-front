@@ -17,7 +17,14 @@ export const SIDE_BAR_ROUTES = {
   EMPLOYEE: '/modules/employees',
   PROFILE: '/modules/profile',
   TEAM: '/modules/team',
+
+  //time_off routes
   MY_TIME_OFF: '/modules/time_off/my_time_off',
-  TEAM_TIME_OFF: '/modules/time_off/time_off_team',
+  TEAM_TIME_OFF: '/modules/time_off/team_time_off',
   EMPLOYEE_TIME_OFF: '/modules/time_off/employee_time_off',
+
+  //attendance routes
+  MY_ATTENDANCE: '/modules/attendance/my_attendance',
+  TEAM_ATTENDANCE: '/modules/attendance/team_attendance',
+  EMPLOYEE_ATTENDANCE: '/modules/attendance/employee_attendance',
 };

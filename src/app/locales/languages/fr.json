@@ -6,6 +6,10 @@
     "MY_TIME_OFF": "Mes temps libres",
     "TEAM_TIME_OFF": "Temps libre des équipes",
     "EMPLOYEE_TIME_OFF": "Temps libre des employés",
+    "ATTENDANCE": "Présence",
+    "MY_ATTENDANCE": "Mes présences",
+    "TEAM_ATTENDANCE": "Présence des équipes",
+    "EMPLOYEE_ATTENDANCE": "Présence des employés",
     "SETTINGS": "Paramètres",
     "PROFILE": "Mon profil",
     "HELP": "Aide & Support"
@@ -110,7 +114,8 @@
     "ACTIVATE_ACCOUNT": "Activer mon compte",
     "ENABLED": "Actif",
     "fr": "Français",
-    "en": "Anglais"
+    "en": "Anglais",
+    "HOURS": "{{count}} Heures"
   },
   "DRAG_DROP": {
     "TITLE": "Glissez-déposez des fichiers ici, ou cliquez pour sélectionner",
@@ -199,6 +204,24 @@
     "TIME_OFF": {
       "REQUEST_TIME_LIST": "Liste de temps de demande",
       "EMPLOYEE_TIME_OFF": "Temps libre des employés"
+    },
+    "ATTENDANCE": {
+      "MY_ATTENDANCE": {
+        "TITLE": "Mes présences",
+        "DESCRIPTION": "Gérer vos présences",
+        "WORK_SCHEDULE": "Horaire de travail",
+        "LOGGED_TIME": "Temps enregistré",
+        "PAID_TIME": "Temps remunéré",
+        "OVERTIME": "Heure supplementaire"
+      },
+      "TEAM_ATTENDANCE": {
+        "TITLE": "Présence des équipes",
+        "DESCRIPTION": "Gérer les présences des équipes"
+      },
+      "EMPLOYEE_ATTENDANCE": {
+        "TITLE": "Présence des employés",
+        "DESCRIPTION": "Gérer les présences des employés"
+      }
     }
   }
 }

@@ -1,4 +1,5 @@
 'use client';
+
 import {
   Input,
   InputGroup,
@@ -13,15 +14,16 @@ import { DateRange } from 'react-day-picker';
 import { format } from 'date-fns';
 import { useId, useState } from 'react';
 import { PiCalendarThin } from 'react-icons/pi';
-import { BaseIcon } from '../BaseIcon';
 import { IoIosClose } from 'react-icons/io';
 import { FormDatePickerFieldProps } from './interface/input';
 import { BaseText } from '../base-text';
 import { useTranslation } from 'react-i18next';
-import { COMMON_FORMAT_DATE } from 'rise-core-frontend';
+import { COMMON_FORMAT_DATE, APP_DATE_PATTERN } from 'rise-core-frontend';
+import { BaseIcon } from '_components/custom';
 
 export const FormDatePicker = ({
   name,
+  displayFormat,
   label,
   mode,
   placeholder = '',
@@ -32,7 +34,7 @@ export const FormDatePicker = ({
   const id = useId();
   const { t } = useTranslation();
   const [field, { touched, error }, helpers] = useField(name);
-  const isError = isReadOnly ? Boolean(error) : !!(touched && Boolean(error));
+  const isError = isReadOnly ? Boolean(error) : touched && Boolean(error);
   const [open, setOpen] = useState(false);
 
   const handleChange = (value: Date | DateRange | Date[] | undefined) => {
@@ -68,10 +70,18 @@ export const FormDatePicker = ({
     if (mode === 'range') {
       const { from, to } = value as DateRange;
       if (!from) return '';
+
+      const formatShort = (date: Date) => format(date, APP_DATE_PATTERN); // 01 Jan 2026
+
       if (!to || from.getTime() === to.getTime()) {
-        return `Du ${format(from, COMMON_FORMAT_DATE)}`;
+        return `${displayFormat === 'short' ? formatShort(from) : format(from, COMMON_FORMAT_DATE)}`;
       }
-      return `Du ${format(from, COMMON_FORMAT_DATE)} au ${format(to, COMMON_FORMAT_DATE)}`;
+
+      if (displayFormat === 'short') {
+        return `${formatShort(from)} - ${formatShort(to)}`;
+      }
+
+      return `${format(from, COMMON_FORMAT_DATE)}-${format(to, COMMON_FORMAT_DATE)}`;
     }
 
     return '';

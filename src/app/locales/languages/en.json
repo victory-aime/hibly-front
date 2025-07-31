@@ -212,6 +212,7 @@
     },
     "TIME_OFF": {
       "REQUEST_TIME_LIST": "Request time list",
+      "TEAM_TIME_OFF": "Team time off",
       "EMPLOYEE_TIME_OFF": "Employee time off"
     },
     "ATTENDANCE": {

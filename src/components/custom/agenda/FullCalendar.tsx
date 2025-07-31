@@ -17,7 +17,6 @@ import {
   Portal,
 } from '@chakra-ui/react';
 import { BaseButton } from '../button';
-import { BaseIcon } from '../BaseIcon';
 import { HiMiniChevronRight, HiMiniChevronLeft } from 'react-icons/hi2';
 import { VariablesColors } from '_theme/variables';
 import { Status } from '_components/ui/status';
@@ -28,6 +27,7 @@ import { BaseAgendaProps } from './interface/agenda';
 import { IoIosClose } from 'react-icons/io';
 import { useTranslation } from 'react-i18next';
 import { formatDisplayDate } from 'rise-core-frontend';
+import { BaseIcon } from '_components/custom';
 
 export const BaseAgenda = ({
   events,

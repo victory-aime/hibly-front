@@ -105,6 +105,12 @@
     "YEAR": "Année",
     "DAY": "Jour",
     "WEEK": "Semane",
+    "LEGEND": {
+      "RESERVATIONS": "Nouvelle reservation",
+      "MAINTENANCE": "Maintenance programmée",
+      "CANCELED": "Réservation annulé",
+      "UNAVAILABLE": "Véhicule Indisponible"
+    },
     "NO_DATA": "Aucune donnée disponible",
     "PAGE_NOT_FOUND": "Page non trouvée",
     "PAGE_NOT_FOUND_DESC": "La page que vous recherchez n'existe pas ou a été supprimée. Veuillez vérifier l'URL ou revenir à la page d'accueil.",
@@ -203,6 +209,7 @@
     },
     "TIME_OFF": {
       "REQUEST_TIME_LIST": "Liste de temps de demande",
+      "TEAM_TIME_OFF": "Temps libres des équipes",
       "EMPLOYEE_TIME_OFF": "Temps libre des employés"
     },
     "ATTENDANCE": {

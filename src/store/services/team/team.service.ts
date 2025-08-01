@@ -1,4 +1,4 @@
-import { BaseApi } from ' rise-core-frontend';
+import { BaseApi } from 'rise-core-frontend';
 import { MODELS } from '_types/index';
 
 /**

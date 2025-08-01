@@ -14,6 +14,7 @@ import { ModalProps } from './interface/modal';
 import { BaseIcon } from '../base-icon';
 import { useTranslation } from 'react-i18next';
 import { BaseText, TextVariant } from '_components/custom';
+import { useColorModeValue } from '_components/ui/color-mode';
 
 const BaseModal = ({
   isOpen = false,
@@ -37,6 +38,8 @@ const BaseModal = ({
   ...rest
 }: ModalProps) => {
   const { t } = useTranslation();
+  const bgColor = useColorModeValue('gray.200', 'none');
+  const bgColorBody = useColorModeValue('white', 'none');
 
   return (
     <DialogRoot
@@ -47,10 +50,9 @@ const BaseModal = ({
       role={modalType}
       size={isFull ? 'full' : 'lg'}
       motionPreset="slide-in-top"
-      boxShadow={'md'}
       {...rest}
     >
-      <DialogContent width={'full'} bgColor={'gray.200'} p={4}>
+      <DialogContent width={'full'} bgColor={bgColor} p={4}>
         <Flex alignItems={'center'} gap={4} mb={4}>
           {icon && (
             <BaseIcon borderRadius={'7px'} color={iconBackgroundColor}>
@@ -67,7 +69,7 @@ const BaseModal = ({
           mt={4}
           ref={ref}
           p={4}
-          bgColor={'white'}
+          bgColor={bgColorBody}
           borderRadius={'7px'}
         >
           {children}
@@ -87,7 +89,7 @@ const BaseModal = ({
                       <BaseButton
                         disabled={disabled}
                         withGradient
-                        onClick={onChange}
+                        onClick={() => onChange?.(!isOpen)}
                         variant="outline"
                         colorType={'secondary'}
                       >
@@ -112,7 +114,7 @@ const BaseModal = ({
             </DialogFooter>
           ) : null}
         </DialogBody>
-        <Flex aliIgnItems={'flex-end'} justifyContent={'flex-end'}>
+        <Flex alignItems={'flex-end'} justifyContent={'flex-end'}>
           <Image
             src={logoSrc}
             alt={'logo'}

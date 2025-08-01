@@ -1,10 +1,9 @@
 'use client';
 
-import { BaseContainer, BaseText } from '_components/custom';
+import { BaseContainer } from '_components/custom';
 import { BaseAgenda } from '_components/custom/agenda/FullCalendar';
 
 export default function TeamTimeOffPage() {
-  const event: Event[] = [];
   return (
     <BaseContainer
       title={'DASHBOARD.TIME_OFF.TEAM_TIME_OFF'}
@@ -17,7 +16,7 @@ export default function TeamTimeOffPage() {
         },
       }}
     >
-      <BaseAgenda events={event}></BaseAgenda>
+      <BaseAgenda events={[]}></BaseAgenda>
     </BaseContainer>
   );
 }

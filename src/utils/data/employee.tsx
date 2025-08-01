@@ -1,8 +1,13 @@
 import { createListCollection } from '@chakra-ui/react';
-import { BaseStatsProps } from '_components/custom';
+import {
+  BaseBadge,
+  BaseStatsProps,
+  ColumnsDataTable,
+} from '_components/custom';
 import { FiTrendingUp, FiUsers } from 'react-icons/fi';
 import { ENUM } from '_types/index';
 import { IoIosRemove, IoMdAdd } from 'react-icons/io';
+import React from 'react';
 
 interface Employee {
   id: number;
@@ -74,7 +79,8 @@ const stats: BaseStatsProps[] = [
   {
     icon: <FiUsers size={16} color="white" />,
     title: 'Total Employees',
-    color: 'red',
+    color: 'danger',
+    iconBgColor: 'danger.500',
     percent: -0.1,
     isNumber: true,
     currency: ENUM.COMMON.Currency.XAF,
@@ -83,23 +89,66 @@ const stats: BaseStatsProps[] = [
   {
     icon: <FiTrendingUp size={16} color="white" />,
     title: 'Job Applicants',
-    color: 'info.500',
+    color: 'info',
+    iconBgColor: 'info.500',
     percent: 0.4,
     value: 1150,
   },
   {
     icon: <IoMdAdd size={16} color="white" />,
     title: 'New Employees',
-    color: 'tertiary.500',
+    color: 'tertiary',
+    iconBgColor: 'tertiary.500',
     percent: 0.1,
     value: 80,
   },
   {
     icon: <IoIosRemove size={16} color="white" />,
     title: 'Resigned Employees',
-    color: 'red',
+    color: 'secondary',
+    iconBgColor: 'secondary.500',
     percent: 0.5,
     value: 50,
+  },
+];
+
+const columns: ColumnsDataTable[] = [
+  { accessor: 'select', header: '' },
+  {
+    accessor: 'name',
+    header: 'DASHBOARD.TABLE_COLUMN.NAME',
+  },
+  {
+    accessor: 'role',
+    header: 'DASHBOARD.TABLE_COLUMN.ROLE',
+  },
+  {
+    accessor: 'department',
+    header: 'DASHBOARD.TABLE_COLUMN.DEPARTMENT',
+    cell: (value: string) => <BaseBadge status={value} type={'department'} />,
+  },
+  {
+    accessor: 'status',
+    header: 'DASHBOARD.TABLE_COLUMN.STATUS',
+    cell: (value: string) => <BaseBadge status={value} type={'common'} />,
+  },
+  {
+    accessor: 'actions',
+    header: 'Actions',
+    actions: [
+      {
+        name: 'view',
+        handleClick: (data) => console.log('View', data),
+      },
+      {
+        name: 'edit',
+        handleClick: (data) => console.log('Edit', data),
+      },
+      {
+        name: 'delete',
+        handleClick: (data) => console.log('Delete', data),
+      },
+    ],
   },
 ];
 
@@ -110,4 +159,5 @@ export {
   jobCollection,
   stats,
   type Employee,
+  columns,
 };

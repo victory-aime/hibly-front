@@ -67,6 +67,7 @@ export const SelectLanguages: FC<IProps> = ({ onChange, isOpen, language }) => {
       open={isOpen}
       title={'SELECT_LANGUAGES'}
       onChange={onChange}
+      ignoreFooter
     >
       <VStack gap={5} alignItems={'flex-start'}>
         <BaseText variant={TextVariant.XS}>
